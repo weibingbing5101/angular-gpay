@@ -1,3 +1,4 @@
+# 如有问题请联系 我的qq 510137831
 * [项目介绍](#walkthrough)
     * [项目构建](#build-system)
     * [项目结构](#file-structure)
@@ -10,7 +11,6 @@
     * [生成模版](#generating-components)  
 * [路由列表](#router)
 
-# 果仁支付  666666666666666666666666666666666666666666666666666 
 ## Build System
 项目基于webpack gulp构建工作
 全局安装 `sudo npm i -g gulp webpack eslint babel less karma karma-cli`
