@@ -1,0 +1,22 @@
+    <!-- <div class="tit">商户首页 / 我的帐户 / 帐户总览</div> -->
+    <dl class="box-shadow-css warpbox">
+        <dt class="warpbox-left">
+            <gp-tree></gp-tree>
+        </dt>
+        <dd class="warpbox-right">
+            <p class="warpbox-right-title">基本信息</p>
+            <ul class="mine-infor-box">
+                <li class="mine-infor-item">
+                    <div class="mine-infor-li-item-key">商户编号： {{vm.mineInfor.merchantId}}
+                        <gy-tips gydisval="vm.gydisval" />
+                    </div>
+                </li>
+                <li class="mine-infor-item">
+                    登录邮箱： {{vm.mineInfor.email}}
+                </li>
+                <li class="mine-infor-item">
+                    登录角色： {{vm.mineInfor.merOpAuthType | userType}}
+                </li>
+            </ul>
+        </dd>
+    </dl>

@@ -1,0 +1,55 @@
+    <!-- <div class="tit">商户首页 / 我的帐户 / 通知密钥</div> -->
+   <dl class="box-shadow-css warpbox">
+        <dt class="warpbox-left">
+            <gp-tree></gp-tree>
+        </dt>
+        <dd class="warpbox-right">
+            <p class="warpbox-right-title">通知密钥</p>
+            </div>
+            <div class="prompt">
+               <p class="prompt-other">提示：为了保障密钥安全，该密钥有效限期至</p>
+               <span class="prompt-time">{{vm.RSA['expiryDate']}}</span>
+               <p class="prompt-other">，请及时下载最新版本使用</p>
+            </div>
+            <div class="rightbottom">
+                <div class="RSA">
+                 	<div class="RSA-name">RSA公钥 :</div>
+                 	<div class="RSA-content">
+                       <textarea  
+                           readonly
+                           autocomplete="off"
+                           col='10'
+                           ng-model="vm.RSA['publicKey']"            ng-change="vm.inputChangeFN()"
+                           class="RSA-content-text" >
+                       </textarea>
+                    </div>
+                 </div>
+                <div class="RSA">
+                 	<div class="RSA-name">历史密钥记录 :</div>
+                 	<div class="RSA-content">
+                       <table class="RSA-table">
+                        <thead>
+                          <tr>
+                            <th>生成日期</th>
+                            <th>RSA公钥</th>
+                            <th>失效日期</th>
+                            <th class="RSA-table-right">状态</th>
+                         </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in vm.RSARecord">
+                              <td>{{row['createTime']}}</td>
+                              <td class="td-publickey">{{row['publicKey']}}</td>
+                              <td>{{row['expiryDate']}}</td>
+                              <td ng-bind-html="row['status'] | StatusText"> </td>
+                             
+                            </tr>
+                        </tbody>
+                       </table>
+                    </div>
+                 </div>
+
+            </div>
+        </dd>
+    </dl>
+   

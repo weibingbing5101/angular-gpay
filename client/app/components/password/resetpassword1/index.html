@@ -1,0 +1,64 @@
+<div class="resetpw-box box-shadow-css warpbox">
+	<!--重置填写邮箱部分-->
+	<div class="resetpw-box-inputbox input-out-box"  ng-style="{display: !vm.indentShow ? 'block': 'none'}">
+		<p class="resetpw-box-inputbox-tit">重置密码</p>
+		<div class="resetpw-box-inputbox-emailbox mt30px">
+			<input type="text" 
+				placeholder="输入您的注册邮箱" 
+				class="home-login-input" 
+				ng-model="vm.email" 
+				ng-change="vm.emailInputChangeFN()"
+			/>
+		</div>	
+		<p class="home-login-tips mt10px wred mb0px mt10px h40px">
+			{{vm.emailTips}}
+		</p>
+		<p class="home-login-input nuse" ng-class="{yuse:vm.emailNext}" ng-click="vm.emailNextFN()">
+			<a href="javascript:;">下一步</a>
+		</p>
+	</div>
+
+	<!--重置填写验证码部分-->
+	<div class="resetpw-box-inputbox input-out-box" ng-style="{display: vm.indentShow ? 'block': 'none'}">
+		<p class="resetpw-box-inputbox-tit">重置密码</p>
+		<p class="resetpw-box-inputbox-tips">
+			邮件已发送，请进入{{vm.disEmail}}查看。
+			邮件可能被放入垃圾邮件，请仔细检查;
+			若还未收到，请重新填写邮箱地址。
+		</p>
+		<div class="resetpw-box-inputbox-emailbox ">
+			<input 
+				type="text" 
+				placeholder="输入您的注册邮箱" 
+				class="home-login-input" 
+				ng-disabled="vm.reSendInput" 
+				ng-model="vm.email" 
+				ng-change="vm.emailInputChangeFN()"
+				>
+			</input>
+		</div>	
+		<p class="home-login-tips mt10px wred mb0px mt10px h40px">
+			{{vm.emailTips}}
+		</p>
+		<p class="home-login-input nuse" ng-class="{'yuse':vm.reSend}" ng-click="vm.emailNextFN()">
+			<a href="javascript:;">{{vm.reSentCon}}{{vm.secound}}</a>
+		</p>
+	</div>
+	<!--
+	<form class="form-horizontal" name="registForm" ng-submit="vm.loginFn()">
+		<p class="form-group">
+			<input type="text" ng-model="vm.userName" name='userName' id='userName' placeholder="请输入用户名" required></input>
+	  		<errormsg data-form-base="registForm" data-form-key="userName">用户名不能为空</errormsg>
+		</p>
+		<p>
+			<input type="password" ng-model="vm.passWorld" name='passWorld' id='passWorld' placeholder="请输入密码" required  ng-maxlength="16"></input>
+	  		<errormsg data-form-base="registForm" data-form-key="passWorld">密码格式错误</errormsg>
+		</p>
+		<p  class="form-group">
+			<button type="submit" class="btn btn-primary btn-sm" ng-switch="registForm.form" ng-disabled="registForm.$invalid">
+	              <span ng-switch-default>登录</span>
+	         </button>
+		</p>	  	
+	 </form>
+	 -->
+</div>

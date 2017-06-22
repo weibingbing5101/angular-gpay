@@ -1,0 +1,68 @@
+<div class="appdesc">
+	<div class="appdesc-body box-shadow-css warpbox">
+		<div class="appdesc-left warpbox-left">
+			<gp-tree></gp-tree>
+		</div>
+		<div class="appdesc-right warpbox-right">
+			<div class="appdesc-right-title">应用概况</div>
+			<div class="appdesc-right-center">
+				<span class="description">
+					在正式接入时，您可以在应用信息中获取appId及md5Key。
+				</span>
+				<div class="btn" ng-click='vm.goSDK()'>
+					SDK下载
+				</div>
+				<div class="btn" ng-click='vm.goDoc()'>
+					阅读文档
+				</div>
+			</div>
+			<div class="appdesc-right-centerbottom">
+				<div class="cellwidth">
+					<div class="commoninfo">总交易用户数(人)</div>
+					<div class="commonnum">{{vm.appBasicInfo.totalUsr}}</div>
+				</div>
+				<div class="cellwidth">
+					<div  class="commoninfo">成功交易额({{vm.currency==='USD'?'美元':'元'}})</div>
+					
+					<div class="commonnum">{{vm.appBasicInfo.totalAmt}}</div>
+				</div>
+				<div class="cellwidth">
+					<div class="commoninfo">发起订单数(笔)</div>
+					<div class="commonnum">{{vm.appBasicInfo.totalOrdr}}</div>
+				</div>
+				<div class="cellwidth">
+					<div class="commoninfo">成交订单数(笔)</div>
+					<div class="commonnum">{{vm.appBasicInfo.totalSucOrdr}}</div>
+				</div>
+				<div class="cellwidth">
+					<div class="commoninfo">订单转换率(%)</div>
+					<div class="commonnum">{{vm.appBasicInfo.ordrCvt}}%</div>
+				</div>
+			</div>
+			<div class="appdesc-right-chart">
+				<div class="appdesc-right-chart-tradeTrend">
+					<div class="chart-tradeTrend-title">交易趋势</div>
+					<div class="chart-tradeTrend-day">
+						<span>
+							<input type="radio" name="day" ng-model="vm.isToday" ng-checked="true" 
+								ng-click="vm.getTradeChart(0)" />今日
+						</span>
+						<span>
+							<input type="radio" name="day" ng-model="vm.isYesterday"
+								ng-click="vm.getTradeChart(1)" />昨日
+						</span>
+					</div>
+					<div class="chart-tradeTrend-content" style="width: 960px;height:400px;"></div>
+				</div>
+				<div class="appdesc-right-chart-seven">
+					<div class="chart-seven-title">最近7日交易情况</div>
+					<div class="chart-seven-content" style="width: 960px;height:400px;"></div>
+				</div>
+				<div class="appdesc-right-chart-month">
+					<div class="chart-month-title">最近30日交易情况</div>
+					<div class="chart-month-content" style="width: 960px;height:400px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

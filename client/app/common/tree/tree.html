@@ -1,0 +1,57 @@
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div ui-tree-handle ng-class="'level'+node.level" ng-click="node.disabled || vm.nodeClick(node)" ng-disabled="node.disabled">
+        <!--icon-->
+        <span 
+            ng-if="node.iconClass && node.menuCollapsed" 
+            class='menu-icon' 
+            ng-class="node.iconClass"
+            ng-if="node.level === 0"
+        >
+        </span>        
+        <span 
+            ng-if="node.iconCurClass && !node.menuCollapsed" 
+            class='menu-icon' 
+            ng-class="node.iconCurClass"
+            ng-if="node.level === 0"
+        >
+        </span>
+        <span ng-if="!node.icon && !(node.level === 0 || node.level)" class='menu-icon' ng-style="{ 'background-image': 'url('+vm.menuDefault+')' }"></span>
+        <span ng-class="'menu-text'+' '+(node.disabled?'node-disabled':'')">{{ node.title }}</span>
+        <span 
+            class="menu-arrow" 
+            ng-if="node.nodes && node.nodes.length > 0" data-nodrag 
+            ng-class="{
+            'glyphicon-menu-r': collapsed,
+            'glyphicon-menu-d': !collapsed
+            }"
+        >
+        </span>
+    
+    </div>
+    <ul ui-tree-nodes ng-model="node.nodes" class='menu-items' ng-class="{ 'menu-nodes-show': !collapsed}">
+        <li 
+            ng-repeat="node in node.nodes" 
+            ui-tree-node ng-include="'nodes_renderer.html'" 
+            data-collapsed="node.menuCollapsed" 
+            ng-class="'level'+node.level+' '+(collapsed?'collapsed':'nocollapsed')+' '+(node.nodes?' menu-has-nodes':'')"
+        >
+        </li>
+    </ul>
+</script>
+<div class="menu-container" ng-class="{'menu-state-close': vm.close}">
+    <!--
+  <div class='close-wrap'>
+    <span class='close-line'></span>
+    <span class='close-icon' ng-click='vm.closeMenu()'
+          ng-style="{ 'background-image': 'url('+vm.closeMenuImg+')' }"></span>
+  </div>
+  -->
+    <div ng-if="vm.loading" style="width: 100%;height: 200px;text-align: center;padding-top: 100px">
+        <img ng-src="{{vm.loadingImg}}" alt="" />
+    </div>
+    <div ui-tree id="tree-root" data-drag-enabled='false'>
+        <ul ui-tree-nodes ng-model="vm.menus" class='menu-items'>
+            <li ng-repeat="node in vm.menus" ui-tree-node ng-include="'nodes_renderer.html'" data-collapsed="node.menuCollapsed" ng-class="vm.buildClassName(node,collapsed)"></li>
+        </ul>
+    </div>
+</div>

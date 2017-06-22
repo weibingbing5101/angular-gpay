@@ -1,0 +1,17 @@
+<!--  
+<div class="zns_select">
+	<p ng-click="vm.changeFN($event)">{{vm.selValue}} <em class="zns_em" ng-class="{down:vm.bShow}"></em></p>
+	<ul ng-style="{display: vm.bShow ? 'block' : 'none'}">
+		<li ng-click="vm.changeValFN(item)" ng-repeat="item in vm.gyseldata">{{item.value}}</li>
+	</ul>
+</div>
+-->
+<div class="zns_select" ng-class="{nzns_select:!vm.gyseldata}">
+
+	<p ng-show="!vm.gyseldata">暂无选项<em class="zns_em"></em></p>
+
+	<p ng-show="vm.gyseldata" ng-click="vm.changeFN($event)">{{vm.selValue}} <em class="zns_em" ng-class="{down:vm.bShow}"></em></p>
+	<ul ng-class="{selectulshow:vm.bShow}">
+		<li ng-click="vm.changeValFN(item)" ng-repeat="item in vm.gyseldata">{{item.value}}</li>
+	</ul>
+</div>

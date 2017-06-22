@@ -1,0 +1,47 @@
+<div class="businesshome">
+    <div class="business-first commonshow box-shadow-css" ng-click="vm.jumpAppDesc(item)" ng-repeat="item in vm.appInfo">
+        <div class="business-icon">
+            <img ng-src="{{item.iconUrl}}">
+        </div>
+        <div class="business-title" ng-bind-html="item.appNameNew | spaceStyle" ></div>
+        <div class="business-appid">appid : {{item.appId}}</div>
+        <div class="business-today">
+            <div class="business-today-date">今日</div>
+            <div class="business-today-count">{{item.ordrsTday}}&nbsp;笔</div>
+            <div class="business-today-rmb">{{vm.currency==='USD'?'USD':'RMB'}} &nbsp;&nbsp;{{item.amtTday | numPoint2}}</div>
+            <!--
+            <div class="business-today-gop">(GOP &nbsp;&nbsp;{{item.gopAmountTday | gopPoint3}})</div>
+            -->
+        </div>
+        <div class="business-yesterday">
+            <div class="business-yesterday-date">昨日</div>
+            <div class="business-yesterday-count">{{item.ordrsYstdy}}&nbsp;笔</div>
+            <div class="business-yesterday-rmb">{{vm.currency==='USD'?'USD':'RMB'}} &nbsp;&nbsp;{{item.amtYstdy | numPoint2}}</div>
+            <!--
+            <div class="business-yesterday-gop">(GOP &nbsp;&nbsp;{{item.gopAmtYstdy | gopPoint3}})</div>
+            -->
+        </div>
+    </div>
+    <div class="business-second commonshow box-shadow-css" ng-if="0 < vm.appInfo.length && vm.appInfo.length<10" ng-click="vm.createApp()">
+        <div class="business-second-plus">
+            <div class="business-second-plushori"></div>
+            <div class="business-second-plusver"></div>
+
+        </div>
+        <div class="business-second-info">创建新应用</div>
+    </div>
+    <div class="business-third commonshow box-shadow-css" ng-if="0 == vm.appInfo.length">
+        <div class="business-third-info">您现在还没有应用</div>
+        <div class="business-third-btn">
+            <button class="business-third-btn-info" ng-click="vm.createApp()">创建新应用</button>
+        </div>
+    </div>
+</div>
+<!--URL传参缺少-->
+<gy-alert
+    gytitlel="vm.alertData.title"
+    gycontext="vm.alertData.conText"
+    gybuttontext="vm.alertData.buttonText"
+    gyisshow="vm.alertData.isAlertShow"
+    gyclickfn="vm.alertData.clickFn"
+></gy-alert>

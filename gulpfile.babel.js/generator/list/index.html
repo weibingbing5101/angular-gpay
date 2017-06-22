@@ -1,0 +1,48 @@
+<div class="panel-wrap">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= title %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="bg-info clearfix">
+        <%= helper.includeTpl('form.html', {params: query.params})%>
+      </div>
+      <!-- /查询条件 -->
+
+      <!-- 表格 -->
+      <table class="table table-striped table-hover table-bordered clearfix" ng-table="vm.tableParams">
+        <thead>
+        <tr>
+        	<% for(var i=0,item;item=list[i];i++){ %>
+          <th> <%= item.name %> </th>
+          <% } %>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in $data track by $index">
+        	<% for(var i=0,item;item=list[i];i++){ %>
+            <% if(item.content){ %>
+              <td>
+                <% var btns = item.content; %>
+                <% for(var j=0,btn;btn=btns[j];j++){ %>
+                  <% if(btn.type==='link'){ %>
+                    <a href="<%=btn.url%>"><%=btn.name%></a>
+                  <% }else{ %>
+                      <a href="javascript: void(0);" ng-<%=btn.type%>="vm.<%=btn.key%>(item)"><%=btn.name%></a>
+                  <% } %>
+                <% } %>
+              </td>
+            <% }else{ %>
+              <td>{{row['<%= item.key %>']}}</td>
+            <% } %>
+          <% } %>
+        </tr>
+        </tbody>
+      </table>
+      <!-- /表格 -->
+      <div class="search-tip" ng-hide="vm.tableParams && (vm.tableParams.data).length != 0">
+        请选择查询条件进行搜索!
+      </div>
+    </div>
+  </div>
+</div>

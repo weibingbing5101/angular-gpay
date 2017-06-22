@@ -1,0 +1,110 @@
+commonfooter {
+    display: block;
+    background-color: #f2f2f2;
+}
+
+.footer {
+    clear: both;
+    text-align: center;
+    width: 1100px;
+    margin: 0 auto;
+    padding: 60px 0px 50px 0px;
+    &-top{
+        overflow: hidden;
+    }
+    &-logo{
+        float: left;
+        &-img{  
+           display:inline-block;
+           background-image: url('./../../lib/img-sprite.png');
+           background-repeat: no-repeat;
+           background-position:0px -1088px;
+           vertical-align: middle;
+           height:40px;
+           width:300px;
+           //text-align: left;
+           position:relative;
+        }   
+        &-desc{
+            text-align: left;
+            width: 300px;
+            margin-top: 25px;
+            color: #919191;
+        }
+        &-li{
+        display: inline-block;
+        font-size: 26px;
+        font-family: fantasy;
+        position:absolute;
+        left:43px;
+        }
+    }
+    &-guoren{
+        float: left;
+        margin-left: 170px;
+        text-align: left;
+        &>span{
+            color: #919191;
+        }
+        &-item{
+            padding: 10px 5px;
+            display: block;
+        }
+    }
+    &-wrap {
+        /*width: 100%;*/
+        /*padding: 50px 50px 50px 40px;*/
+        margin: 0 auto;
+        float: left;
+        margin-left: 75px;
+        &-link {
+            line-height: 40px;
+            text-align: left;
+            margin: 0;
+            color: #919191;
+            .footer-link-item {
+                /*padding: 0 5px;*/
+                display: block;
+            }
+        }
+        &-bq {
+            line-height: 40px;
+            text-align: left;
+            margin: 0;
+            color: #919191;
+            &>span {
+                display: block;
+            }
+        }
+    }
+    &-business{
+        float: right;
+        text-align: left;
+        /*margin-right: 60px;*/
+        padding-top: 10px;
+        &>span{
+            font-size: 20px;
+        }
+        &-item{
+            padding: 30px 10px 0 0;
+        }
+    }
+}
+
+.footer-link-item:focus, .footer-link-item:visited{
+    outline: none;
+    text-decoration: none;
+}
+
+.footer-copyright{
+    line-height: 40px;
+    text-align: center;
+    margin: 0;
+    color: #919191;
+    border-top: 1px solid #ccc;
+    padding-top: 25px;
+    margin-top: 40px;
+    &>span {
+        display: block;
+    }
+}

@@ -1,0 +1,213 @@
+<!- 增加warpbox，for 去掉移动端样式，by 刘炳礼 -!>
+<div class="home warpbox" ng-keydown="vm.keydownLoginFN($event)">
+	<div class="home-banner">
+		<div class="home-banner-login">
+			<!--未登录 显示的样式-->
+			<div class="home-banner-login-box input-out-box" ng-style="{display: !vm.BloginSuccess ? 'block' : 'none'}">
+				<p class="home-banner-login-tit">商户登录</p>
+
+				<div class="home-banner-login-emailbox mt30px">
+					<input 
+						type="text" 
+						class="home-login-input" 
+						ng-model="vm.email" 
+						name="email"
+						autocomplete="off"
+						id="email_login" 
+						ng-blur="vm.emailChangeFN()"
+						placeholder="请输入邮箱地址" 
+					/>
+				</div>
+				<div class="home-banner-login-passwordbox mt30px">
+					<input 
+						type="password" 
+						name="password_login"
+						id="password_login" 
+						autocomplete="off"
+						class="home-login-input" 
+						ng-model="vm.password" 
+						ng-blur="vm.passwordChangeFN()"
+						ng-change="vm.passwordChangeFN()"
+						maxlength="16" 
+						placeholder="请输入登录密码" 
+					/>					
+				</div>				
+				<div class="home-banner-login-indent mt30px" ng-style="{display:vm.BindentShow ? 'block' : 'none'}">
+					<input type="text" class="home-login-input" ng-change="vm.indentChangeFN()" ng-model="vm.indentCode"></input>
+					<img 
+						ng-src="{{vm.images.indentImg}}" 
+						class="home-banner-login-indent-img" 
+						ng-click="vm.getIndentFN({'email' : vm.email})"
+					/>
+				</div>
+
+				<p class="home-banner-login-forgetpw">
+					<a href="javascript:;" ng-click="vm.forgetPassWord()">忘记密码</a>
+				</p>
+				<p class="home-login-tips mt10px wred" style="height:30px;">
+					{{vm.tips}}
+				</p>
+				<p class="home-banner-login-submitbtn home-login-input nuse" ng-class="{yuse:vm.BloginBtn}" ng-click="vm.loginFN()">
+					<a href="javascript:;">登录</a>
+				</p>
+			</div>
+			<!--登录成功显示的样式-->
+			<div class="home-banner-login-box input-out-box" ng-style="{display:vm.BloginSuccess?'block':'none'}">
+				<div class="home-banner-login-success">
+					<span class="home-banner-login-success-img mt10px"></span>
+					<p class="home-banner-login-success-word wblue mt20px">
+						登录成功
+					</p>
+					<p class="home-banner-login-success-useraccnum mb50px">{{vm.userAccNum}}</p>
+					<p class="home-banner-login-success-gotoindex"><a href="#/business/businesshome">进入商户首页</a></p>
+					<p class="home-banner-login-success-exit"><a href="javascript:;" ng-click="vm.exitFN()">退出登录</a></p>
+				</div>
+			</div>
+		</div>		
+
+		
+		<ul class="home-banner-ul">
+			<li class="home-banner-li" style="background: none;">	
+				<banner-star ></banner-star>
+				<div class="home-banner-content">
+					<div class="home-banner-content-text1">全新支付体验</div>
+					<div class="home-banner-content-text2">为商户提供Android/IOS/手机网站支付解决方案</div>
+					<div class="home-banner-content-text3">1天极速接入</div>
+					<div class="home-banner-btn-wrap">
+						<a class="home-banner-btn" href='#/experience/center'>立 即 体 验</a>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="home-clayer">
+		<div class="home-clayer-in">
+			<h1 class="home-clayer-tit">应用场景</h1>
+			<h1 class="home-clayer-mtit">果仁支付场景</h1>
+			<ul class="home-clayer-ul">
+				<li class="home-clayer-li">
+					<span class="home-clayer-li-tit">手机支付</span>
+					<span class="home-clayer-li-tit">手机支付</span>
+					<span class="home-icon home-icon-phonepay home-clayer-li-img"></span>
+					<span class="home-clayer-li-des">
+						Android/iOS/HTML5  
+						<br/>
+						微信公众号
+					</span>
+					<a href="#/doc/guide" class="yuse home-clayer-li-a">立即接入</a>
+				</li>				
+				<li class="home-clayer-li">
+					<span class="home-clayer-li-tit">网页扫码支付</span>
+					<span class="home-clayer-li-tit">网页扫码支付</span>
+					<span class="home-icon home-icon-webpay home-clayer-li-img"></span>
+					<!-- <img ng-src="{{vm.images.conlistitem2}}" class="home-clayer-li-img"> -->
+					<span class="home-clayer-li-des">
+						支持网页端接入  <br/>
+						二维码自动生成
+					</span>
+					<a href="javascript:;" class="nuse home-clayer-li-a">敬请期待</a>
+				</li>				
+				<li class="home-clayer-li">
+					<span class="home-clayer-li-tit">线下实体扫码支付</span>
+					<span class="home-clayer-li-tit">线下支付</span>
+					<span class="home-icon home-icon-storepay home-clayer-li-img"></span>
+					<span class="home-clayer-li-des">
+						支持主被动扫码支付  <br/>
+						多支付渠道一码多扫技术
+					</span>
+					<a href="javascript:;" class="nuse home-clayer-li-a">敬请期待</a>
+				</li>
+			</ul>		
+		</div>
+	</div>
+	<div class="home-clayer noborder">
+		<div class="home-clayer-in">
+			<h1 class="home-clayer-tit home-clayer-tit2">商户接入流程</h1>
+			<div class="home-clayer-sh">
+				<ul class="home-clayer-ul home-clayer-ul2">
+					<li class="home-clayer-licon">
+                        <span class="home-icon home-icon-step1 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">1/</span><span class="home-clayer-licon-stepcon-world">商务人员对接</span>
+						</p>
+					</li>			
+					<li class="home-clayer-listep">
+						<!-- <img class="home-clayer-listep-img" ng-src="{{vm.images.conliststep}}">
+						<img ng-src="{{vm.images.marrow}}" class="home-clayer-listep-img2"> -->
+						<span class="home-icon home-icon-arrow home-clayer-listep-img"></span>
+					</li>				
+					<li class="home-clayer-licon">
+						<span class="home-icon home-icon-step2 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">2/</span><span class="home-clayer-licon-stepcon-world">提交申请资料</span>
+						</p>
+					</li>			
+					<li class="home-clayer-listep">
+						<span class="home-icon home-icon-arrow home-clayer-listep-img"></span>
+					</li>				
+					<li class="home-clayer-licon">
+						<span class="home-icon home-icon-step3 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">3/</span><span class="home-clayer-licon-stepcon-world">果仁支付审核</span>
+						</p>
+					</li>			
+					<li class="home-clayer-listep">
+						<span class="home-icon home-icon-arrow home-clayer-listep-img"></span>
+					</li>				
+					<li class="home-clayer-licon">
+						<span class="home-icon home-icon-step4 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">4/</span>
+							<span class="home-clayer-licon-stepcon-world">创建应用</span>
+						</p>
+					</li>			
+					<li class="home-clayer-listep">
+						<span class="home-icon home-icon-arrow home-clayer-listep-img"></span>
+					</li>				
+					<li class="home-clayer-licon">
+						<span class="home-icon home-icon-step5 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">5/</span>
+							<span class="home-clayer-licon-stepcon-world">开发调试</span>
+						</p>
+					</li>			
+					<li class="home-clayer-listep">
+						<span class="home-icon home-icon-arrow home-clayer-listep-img"></span>
+					</li>				
+					<li class="home-clayer-licon">
+						<span class="home-icon home-icon-step6 home-clayer-li-img"></span>
+						<p class="home-clayer-licon-stepcon">
+							<span class="home-clayer-licon-stepcon-no">6/</span>
+							<span class="home-clayer-licon-stepcon-world">上线</span>
+						</p>
+					</li>			
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="home-clayer home-lastpartbg">
+		<div class="home-clayer-in">
+			<h1 class="home-clayer-tit mb40px home-clayer-tit3">即刻成为商户</h1>
+			<p class="home-clayer-world wblue fontsize12">
+				CHOOSE GOOPAL PAY, THE MOSE EFFECTIVE WAY TO DO THINGS MORE EFFICIENTLY
+			</p>			
+			<p class="home-clayer-world">
+				选择果仁支付，用最有效的方式，去做更有效的事情
+			</p>
+			<ul class="home-clayer-concat">
+				<li class="home-clayer-concat-li">
+					<div class="home-clayer-concat-email">
+						<span class="home-icon home-icon-email"></span>
+						<span>goopal.service@goopal.com</span>
+					</div>
+				</li>
+				<li class="home-clayer-concat-li">
+					<div class="home-clayer-concat-phone">
+						<span class="home-icon home-icon-phone"></span>
+						<span>400-184-9696</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>	
+</div>

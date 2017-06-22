@@ -1,0 +1,77 @@
+<!-- <div class="tit">商户首页 / 我的帐户 / 帐户总览</div> -->
+<dl class="box-shadow-css warpbox ">
+    <dt class="warpbox-left">
+        <gp-tree></gp-tree>
+        <!--
+		<p class="mine-box-con-left-item cur">
+			<span class="mine-box-con-left-item-leftimg"></span>
+			<span class="mine-box-con-left-item-rightcon">账户总览</span>
+		</p>
+		<p class="mine-box-con-left-item">基本信息</p>
+		<p class="mine-box-con-left-item">修改密码</p>
+		-->
+    </dt>
+    <dd class="warpbox-right">
+        <p class="warpbox-right-title">修改密码</p>
+        <ul class="mine-editpwd">
+            <li class="mine-editpwd-item">
+                <div class="resetpw-box-inputbox-emailbox mt30px">
+                    <input 
+                        type="password" 
+                        placeholder="输入原始密码" 
+                        class="home-login-input" 
+                        name="password_login"
+                        ng-model="vm.formData.password1" 
+                        ng-blur="vm.changeFN1()" 
+                        ng-focus="vm.sameFN()"
+                        maxlength="16" 
+                        autocomplete="off"/>
+                </div>
+                <div class="resetpw-box-inputbox-emailbox mt30px">
+                    <input 
+                        type="password" 
+                        placeholder="请输入新密码" 
+                        class="home-login-input" 
+                        name="password_login"
+                        ng-model="vm.formData.password2" 
+                        ng-blur="vm.changeFN2()" 
+                        ng-focus="vm.sameFN()"
+                        maxlength="16" 
+                        autocomplete="off"/>
+                </div>
+                <!--显示错误提示-->
+                <p class="resetpw-login-tips wred">
+                    {{vm.formError.password}}
+                </p>
+                <p class="home-login-input yuse" ng-click="vm.mineReSetPwFN()">
+                    <a href="javascript:;">保存</a>
+                </p>
+            </li>
+        </ul>
+    </dd>
+</dl>
+<!--重置密码成功弹窗-->
+<div class="success-warp" ng-show="vm.successAlertData.isShow">
+    <div class="success-content">
+        <div class="success-icon">
+            <img ng-src="{{vm.successAlertData.successIcon}}">
+        </div>
+        <div class="success-txt">
+            恭喜，您的密码修改成功
+        </div>
+        <div class="success-button" ng-click="vm.successAlertData.login()">
+            知道了
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

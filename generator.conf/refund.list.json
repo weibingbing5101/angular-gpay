@@ -1,0 +1,32 @@
+{
+	"title": "退款列表",
+	"form": [{
+		"type": "text",
+		"title": "退款单号",
+		"model": "refundId"
+	}, {
+		"type": "select",
+		"title": "交易类型",
+		"model": "refundType",
+		"data": {
+			"options": {
+				"key": "key",
+				"value": "value"
+			},
+			"optionsData": [{
+				"key": 0,
+				"value": "全部"
+			}, {
+				"key": 1,
+				"value": "主动退款"
+			}]
+		}
+	}],
+	"list": [{
+		"name": "退款单号",
+		"key": "refundId"
+	}, {
+		"name": "退款时间",
+		"key": "refundTime"
+	}]
+}

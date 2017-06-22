@@ -1,0 +1,56 @@
+<div class="sheetdl">
+	   <!-- <div class="sheetdl-title">
+		      <span class="first">商户首页/</span>
+		      <span class="second">报表下载</span>
+	   </div> -->
+   	<div class="sheetdl-body box-shadow-css warpbox">
+   		<div class="sheetdl-body-left warpbox-left">
+   			<gp-tree></gp-tree>
+   		</div>
+   		<div class="sheetdl-body-right warpbox-right">
+   			<div class="right-title">报表下载</div>
+   			<div class="right-sheettime" id="right-sheettime">
+   				<span class="right-sheettime-first">选择报表时间</span>
+               <gy-calendar gymodel="vm.model" class="right-sheettime-second">
+
+               <!-- <gy-calendarlink class="right-sheettime-second"></gy-calendarlink>
+               </gy-calendar> -->
+   			</div>
+   			<div class="right-sheettype">
+   				<span class="right-sheettype-first">报表类型</span>
+   				<div class="right-sheettype-second right-sheettype-common"
+                     ng-class="{'right-sheettype-selected': vm.reportType=='consume'}"
+                     ng-click="vm.setConsumeType()">交易单
+                     <div class="right-sheettype-second-img" 
+                        ng-show="vm.reportType=='consume'">  
+                     </div>
+               </div>
+   				<div class="right-sheettype-third right-sheettype-common"
+                     ng-class="{'right-sheettype-selected': vm.reportType=='refund'}"
+                     ng-click="vm.setRefundType()">退款单
+                     <div class="right-sheettype-third-img" 
+                        ng-show="vm.reportType=='refund'">       
+                     </div>
+               </div>
+   				<div class="right-sheettype-fourth right-sheettype-common"
+                     ng-class="{'right-sheettype-selected': vm.reportType=='settle'}"
+                     ng-click="vm.setSettleType()">结算单
+                     <div class="right-sheettype-fourth-img" 
+                        ng-show="vm.reportType=='settle'">       
+                     </div>
+               </div>
+   			</div>
+   			<div class="right-sheetformat">
+   				<span class="right-sheetformat-first">报表格式</span>
+   				<input class="right-sheetformat-second" type="radio" name="txt" value="txt" 
+                  checked="checked" ng-click="vm.changeReportType('txt')">&nbsp;&nbsp;txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <input class="right-sheetformat-second" type="radio" name="txt" value="cvs"
+                  ng-click="vm.changeReportType('csv')">&nbsp;&nbsp;csv
+   			</div>
+   			<div class="right-sheetbtn">
+   				<div class="right-sheetbtn-info yuse btn" ng-click="vm.getIsHasFile()">下载报表</div>
+               <div class="right-sheetbtn-err">{{vm.errmsg}}</div>
+   			</div>
+   		</div>
+   	</div>
+</div>

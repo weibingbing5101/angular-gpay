@@ -1,0 +1,35 @@
+<div>
+ 	<form name="appForm" ng-submit="vm.add()">
+ 		<p>
+ 			&nbsp;&nbsp;<input 
+ 							type="text" 
+ 							name="name" 
+ 							ng-model="vm.formData.name"
+              				required 
+ 							placeholder="请输入用户名">
+ 			<errormsg data-form-base="appForm" data-form-key="name">用户名不能为空
+ 			</errormsg>
+ 			
+ 		</p>
+ 		<p>
+ 			&nbsp;&nbsp;<input 
+ 							type="password" 
+ 							name="password"
+ 							required
+ 							ng-minlength="1"
+ 							ng-maxlength="16"
+ 							ng-model="vm.formData.password" 
+ 							placeholder="请输入密码">
+ 			<errormsg data-form-base="appForm" data-form-key="password">密码在1到16位之间
+ 			</errormsg>
+
+ 		</p>
+ 		<p>
+ 			<button type="submit" ng-disabled="appForm.$invalid">
+ 			提交
+ 			</button>
+
+ 		</p>
+
+ 	</form>
+</div>

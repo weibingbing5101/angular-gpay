@@ -1,0 +1,19 @@
+<div class="calendar">
+  	<div 
+      class="calendar-time" 
+      ng-model="vm.calendartime"
+      ng-click="vm.showcalendar($event)">
+        <span class="calendar-timespan">{{vm.calendartime}}</span>
+    </div>
+  	<div class="zns_calendar box-shadow-css" ng-show="vm.isShowCalendar">
+    		<a class="left" ng-click="vm.left($event)">&lt;</a>
+    		<a class="right" ng-click="vm.right($event)">&gt;</a>
+    		<div class="calendar-title">{{vm.timeTitle}}</div>
+    		<ol>
+    			<li ng-repeat="item in vm.weekdays">{{item.day}}</li>
+    		</ol>
+    		<ul class="parent-list">
+    			<li ng-class="item.classname" ng-repeat="item in vm.days" ng-click="vm.showTimeInput(item)">{{item.day}}</li>
+    		</ul>
+  	</div>
+</div>  

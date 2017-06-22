@@ -1,0 +1,9 @@
+<% if(params){  %>
+<form>
+	<% for(var i=0,param;param=params[i];i++){ %>
+  <%= helper.includeTpl(param.type+'.html', { param: param, index: i }) %>
+  <% } %>
+  <button type="submit" class="btn btn-primary" ng-click='vm.searchList()'>查询</button>
+  <button class="btn btn-primary" ng-click='vm.resetForm()'>重置</button>
+</form>
+<% } %>

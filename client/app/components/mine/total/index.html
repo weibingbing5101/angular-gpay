@@ -1,0 +1,60 @@
+<!-- <div class="tit">商户首页 / 我的帐户 / 帐户总览</div> -->
+    <dl class="box-shadow-css warpbox">
+        <dt class="warpbox-left">
+            <gp-tree></gp-tree>
+            <!--
+			<p class="mine-box-con-left-item cur">
+				<span class="mine-box-con-left-item-leftimg"></span>
+				<span class="mine-box-con-left-item-rightcon">账户总览</span>
+			</p>
+			<p class="mine-box-con-left-item">基本信息</p>
+			<p class="mine-box-con-left-item">修改密码</p>
+			-->
+        </dt>
+        <dd class="warpbox-right">
+            <p class="warpbox-right-title">账户总览</p>
+            <ul class="mine-total-box">
+                <li class="mine-total-item">
+                    <p  class="mine-total-item-key">待结算余额 /{{vm.currency==='USD'?'美元':'元'}}</p>
+                    <p class="mine-total-item-val">{{vm.mineTotal.prepayTotalAmount}}</p>
+                </li>
+
+                <li class="mine-total-item"> 
+                    <p  class="mine-total-item-key">冻结余额 /{{vm.currency==='USD'?'美元':'元'}}</p>
+                    <p class="mine-total-item-val">{{vm.mineTotal.cashFrozenAmount}}</p>
+                </li>
+
+                <!--
+                <li class="mine-box-con-right-total-li">
+                    <p class="mine-box-con-right-total-li-key">可用余额 / 元</p>
+                    <p class="mine-box-con-right-total-li-val">{{vm.mineTotal.cashAvailableAmount}}</p>
+                </li>
+                -->
+                <li class="mine-total-item">
+                    <p class="mine-total-item-key">保证金 / {{vm.currency==='USD'?'美元':'元'}}</p>
+                    <p class="mine-total-item-val">{{vm.mineTotal.securityTotalAmount}}</p>
+                </li>
+            </ul>
+            <!--
+            <div class="mine-total-promisermb">
+                保证金：{{vm.mineTotal.securityTotalAmount}}元
+            </div>
+            -->
+            <div class="mine-total-readyrmb">
+                备付金: {{vm.mineTotal.imprestAvailableAmount}}{{vm.currency==='USD'?'美元':'元'}} 
+                &nbsp (共 {{vm.mineTotal.imprestTotalAmount}}{{vm.currency==='USD'?'美元':'元'}})
+                <gy-tips gydisval="vm.gydisval" />
+                <!--
+                <div class="mine-box-con-right-infor-li-boxa">
+                    <span class="mine-box-con-right-infor-li-ina" ng-mouseenter="vm.showInforFN()" ng-mouseout="vm.hideInforFN()">？
+							</span>
+                    <span class="mine-box-con-right-infor-li-inforboxa" ng-style="{display:vm.showInfor?'block':'none'}">
+								当发起退款时，我们会将退款金额从您的备付金中扣除，请保证金额充足
+							</span>
+                    <span class="mine-box-con-right-infor-li-ja"></span>
+                </div>
+                -->
+            </div>
+        </dd>
+    </dl>
+

@@ -1,0 +1,14 @@
+<div class="popwindow-shadebox">
+	<div class="popwindow">
+		<div class="popwindow-info">
+			<p>{{vm.text}}</p>
+		</div>
+		<div class="popwindow-btn" ng-show="vm.canceltext !='' ">
+			<button class="btn btn1" ng-click="vm.confirm()">{{vm.confirmtext}}</button>
+			<button class="btn btn2" ng-click="vm.cancel()">{{vm.canceltext}}</button>
+		</div>
+		<div class="popwindow-btn popwindow-btnsingle" ng-show="vm.canceltext == '' ">
+			<button class="btn" ng-click="vm.confirm()">{{vm.confirmtext}}</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,155 @@
+@media (max-width:1600px){
+	.businesshome {
+		width: 1149px; 
+	}
+}
+@media (min-width:1600px) and (max-width:1920px){
+	.businesshome {
+		width: 1533px;
+	}
+}
+@media (min-width:1920px){
+	.businesshome {
+		width: 1917px;
+	}
+}
+
+@keyframes bg-generator{
+	0% {
+	    background-position: 0% 84%;
+	}
+	50% {
+	    background-position: 100% 17%;
+	}
+	100% {
+	    background-position: 0% 84%;
+	}
+
+}
+.experiencecenter{
+	min-height: 580px;
+	background-color:#f5f6f7;
+	text-align:justify;
+	text-align: -webkit-center;
+	margin: 0 auto;
+	overflow: hidden;
+	clear: both;
+	.center-banner{
+		background-color:grey;
+		height:300px;
+		text-align: center;
+
+		transition: -webkit-filter 0.2s ease, background-image 0.2s ease;
+    	background: linear-gradient(223deg,#abf2b2 ,#80e0ff, #80e0ff,#ffd16d);
+    	background-size: 600% 600%;
+        -webkit-animation: bg-generator 50s ease infinite;
+    	animation: bg-generator 50s ease infinite;
+
+		.banner-title{
+			padding-top: 117px;
+			font-size: 36px;
+		}
+		.banner-desc{
+			margin-top: 10px;
+		}
+	}
+	.center-content{
+		background-color: white;
+		text-align: center;
+		margin-top:40px;
+		width: 1100px;
+		.content-pay{
+			overflow: hidden;
+			display: inline-block;
+			padding-top: 50px;
+			.pay-way-style{
+				float: left;
+				padding-bottom: 40px;
+				border-bottom: 1px solid #ccc;
+			}
+			.pay-way-selected{
+				border-bottom: 2px solid #00c4d5;
+			}
+			.pay-img-style{
+				background-size: 94px 94px;
+				width: 275px;
+				height:94px;
+				margin-bottom: 20px;
+			}
+			.pay-mobile-net{
+				/*float: left;*/
+				/*padding-bottom: 40px;*/
+				/*border-bottom: 1px solid #00c4d5;*/
+				.net-img{
+					background: url('./images/gf_ty_ydwy.png') no-repeat center;
+					/*background-size: 94px 94px;*/
+					/*width: 300px;*/
+					/*height:94px;*/
+					/*margin-bottom: 20px;*/
+				}
+			}
+			.pay-mobile-app{
+				/*float: left;*/
+				/*padding-bottom: 40px;*/
+				/*border-bottom: 1px solid #ccc;*/
+				.app-img{
+					background: url('./images/gf_ty_ydapp.png') no-repeat center;
+					/*background-size: 94px 94px;*/
+					/*width: 300px;*/
+					/*height:94px;*/
+					/*margin-bottom: 20px;*/
+
+				}
+			}
+			.pay-pc{
+				/*float: left;*/
+				/*padding-bottom: 40px;*/
+				/*border-bottom: 1px solid #ccc;*/
+				.pc-img{
+					background: url('./images/gf_ty_pcsm.png') no-repeat center;
+					/*background-size: 94px 94px;*/
+					/*width: 300px;*/
+					/*height:94px;*/
+					/*margin-bottom: 20px;*/
+
+				}
+			}
+			.pay-offline{
+				/*float: left;*/
+				/*padding-bottom: 40px;*/
+				/*border-bottom: 1px solid #ccc;*/
+				.offline-img{
+					background: url('./images/gf_ty_xxsm.png') no-repeat center;
+					/*background-size: 94px 94px;*/
+					/*width: 300px;*/
+					/*height:94px;*/
+					/*margin-bottom: 20px;*/
+
+				}
+			}
+		}
+		.content-dimension{
+			text-align: center;
+			padding-top: 50px;
+			.dimension-img{
+				margin-top: 50px;
+				margin-bottom: 20px;
+				display: inline-block;
+			}
+			.dimension-desc{
+				padding-bottom: 90px;
+			}
+		}
+		.content-wait{
+			margin-top: 145px;
+			padding-bottom: 210px;
+			.wait-extend{
+			
+			}
+			.wait-expect{
+				margin-top: 60px;
+				font-size: 28px;
+			}
+		}
+	}
+}

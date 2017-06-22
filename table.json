@@ -1,0 +1,12 @@
+{
+	"search": {
+		"url": "/refund/list"
+	}
+	"list": [{
+		key: 'id',
+		name: '订单号'
+	},{
+		key: 'time',
+		name: '生成时间'
+	}]
+}

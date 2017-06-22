@@ -1,0 +1,157 @@
+.sheetdl {
+    // background-color: #f5f6f7;
+}
+
+.sheetdl-title {
+    margin-left: 30px;
+    line-height: 60px;
+    .first {
+        color: #212121;
+    }
+    .second {
+        color: #999999;
+    }
+}
+
+.sheetdl-body {
+    margin-left: 30px;
+    margin-bottom: 120px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.sheetdl-body-left {
+    .left-first {
+        height: 50px;
+    }
+    .left-second {
+        height: 50px;
+    }
+}
+
+.sheetdl-body-right {
+    // border-left: 1px #f5f6f7 solid;
+    .right-title {
+        padding-left: 30px;
+        line-height: 60px;
+        border-bottom: 1px #f5f6f7 solid;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .right-sheettime {
+        line-height: 80px;
+        .right-sheettime-first {
+            margin-left: 80px;
+            margin-right: 40px;
+        }
+        .right-sheettime-second {
+            display: inline-block;
+        }
+    }
+    .right-sheettype {
+        line-height: 80px;
+        .right-sheettype-first {
+            margin-left: 80px;
+            margin-right: 65px;
+        }
+        .right-sheettype-common {
+            display: inline-block;
+            width: 125px;
+            /*border: solid 1px #00c4d5;*/
+            border: solid 1px #ccc;
+            line-height: 40px;
+            border-radius: 30px;
+            text-align: center;
+        }
+        .right-sheettype-selected {
+            border: solid 1px #00c4d5;
+        }
+        .right-sheettype-second {
+            cursor: pointer;
+            margin-right: 15px;
+            position: relative;
+            .right-sheettype-second-img {
+                background-image: url('./../../../lib/img-sprite.png');
+                background-repeat: no-repeat;
+                background-position:0px -994px;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 0px;
+                left: 104px;
+            }
+        }
+        .right-sheettype-third {
+            cursor: pointer;
+            margin-right: 15px;
+            position: relative;
+            .right-sheettype-third-img {
+            //background: url(images/duiogu.png) 20px 20px;
+                background-image: url('./../../../lib/img-sprite.png');
+                background-repeat: no-repeat;
+                background-position:0px -994px;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 0px;
+                left: 104px;
+            }
+        }
+        .right-sheettype-fourth {
+            cursor: pointer;
+            position:relative;
+            .right-sheettype-fourth-img {
+                background-image: url('./../../../lib/img-sprite.png');
+                background-repeat: no-repeat;
+                background-position:0px -994px;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 0px;
+                left: 104px;
+            }
+        }
+    }
+    .right-sheetformat {
+        line-height: 80px;
+        .right-sheetformat-first {
+            margin-left: 80px;
+            margin-right: 65px;
+        }
+        input[type="radio"]{
+            -webkit-appearance: none;
+            /*background-color: grey;*/
+            width:15px;
+            height: 15px;
+            border-radius: 7.5px;
+            border: 6px solid grey;
+            vertical-align: sub;
+            outline:none;
+
+        }
+        input[type="radio"]:checked{
+            -webkit-appearance: none;
+            /*background-color: red;*/
+            width: 15px;
+            height: 15px;
+            border-radius: 7.5px;
+            border: 6px solid #00c4d5;
+        }
+    }
+    .right-sheetbtn {
+        margin-left: 200px;
+        .right-sheetbtn-info {
+            width: 100px;
+            height: 40px;
+            border-radius: 30px;
+            line-height: 40px;
+            text-align: center;
+            color: white;
+            padding-top: 0px;
+        }
+        .right-sheetbtn-err {
+            margin-top: 20px;
+            color: red;
+        }
+    }
+}

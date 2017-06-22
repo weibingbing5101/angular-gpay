@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>果仁支付-浏览器版本太低</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="description" content="">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css" media="screen">
+    	.low {
+		    position: absolute;
+		    height: 100%;
+		    width: 100%;
+		    background: #fff;
+		    top: 0px;
+		    left: 0px;
+  		}
+  		.low-img{
+  			margin: auto;
+  		  display: block;
+  		}
+    </style>
+  </head>
+  <body>
+    <div class="low">
+    	<img src="./images/low.png" class="low-img" id="low-img" />
+		</div>
+    <script type="text/javascript">
+      (function(){
+
+        var lowImg = document.getElementById('low-img');
+        var imageHeight = 390;
+
+        function adjustImg(){
+          var documentHeight = document.documentElement.clientHeight;
+          var top =  documentHeight < imageHeight ? 0 :  (documentHeight - 390)/2;
+          lowImg.style.marginTop = top + 'px';
+        }
+
+        window.onresize = adjustImg;
+
+        adjustImg();
+
+        
+      })();
+    </script>
+  </body>
+</html>

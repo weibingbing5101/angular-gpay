@@ -1,0 +1,91 @@
+<div class="appcreate box-shadow-css warpbox">
+	<div class="appcreate-title">创建应用</div>
+	<div class="appcreating" ng-show="vm.isshowappcreating">
+		<div class="appcreate-remind">温馨提示:应用一经创建，类型及应用icon不可修改，请谨慎操作</div>
+		<form class="appcreateform" name="appcreateform" ng-submit="vm.add()">
+			<div class="appcreateform-name">
+				<label class="nameleft">应用名称:</label>
+				<span>
+					<input type="text" name="name" class="namecenter" required 
+						ng-model="vm.formData.name" ng-change="vm.setNameLength(40)">
+				</span>
+				<label class="nameright">*40个字符以内</label>
+			</div>
+			<div class="appcreateform-type">
+				<label class="nameleft">应用类型:</label>
+				
+				<gy-select 
+					gyreturnval="vm.gyreturnval" 
+					gyseldata="vm.appTypeEnum"  
+					style="display: inline-block;">
+				</gy-select>
+				<!--
+				gyreturnval="vm.gyreturnval"	下拉组件默认选中的数据
+				gyseldata="vm.appTypeEnum"		下拉组件所显示的数据列表
+				-->
+
+				<!-- <select class="namecenter"
+                    ng-options="option.value for option in vm.appTypeEnum  track by option.key"
+                    ng-model="vm.formData.appType">
+                    <option value="">{{vm.gyreturnval}}</option>
+                </select> -->
+			</div>
+			<div class="appcreateform-description">
+				<label class="nameleft">应用描述:</label>
+				<textarea class="namecenter" placeholder="请输入应用描述" 
+					name="description" ng-model="vm.formData.description" 
+					ng-change="vm.setDescLength(100)">
+				</textarea>
+				<label class="nameright">简要介绍应用信息，如电商售卖商品种类等，100个字符以内
+				</label>
+			</div>
+			<div class="appcreateform-icon">
+				<label class="nameleft">应用icon:</label>
+				<div class="namecenter">
+		            <a href="javascript:void(0);" class="btn_addpic"
+		               ngf-select="vm.uploadFiles($file,$invalidFiles)"
+		               accept="title: 'Images',extensions: 'gif,jpg,jpeg,bmp,png',mimeTypes: 'image/jpg,image/jpeg,image/png,image/gif,image/bmp'" ngf-pattern="'.jpg,.jpeg,.png'"
+		               ngf-min-width="120"
+		               ngf-min-height="120"
+		               ngf-max-width="120"
+		               ngf-max-height="120"
+		               ngf-max-size="1MB">
+		                <span class="btn_addpicinfo"></span>
+		            </a>       
+		                
+		            <div class="namecenterpic" data-ng-repeat="item in vm.formData.pics">
+		                <img ng-src="{{item.src}}" class="namecenterpic-img">
+		                <div class="namecenterremovepic">
+			                <a href="javascript:void(0)" data-ng-click="vm.delCur($index)">删除</a>
+			            </div>
+            		</div> 
+		        </div>
+		        <div class="nameright">
+		        	<label class="promt">示例</label>
+		        	<span class="img"></span>
+		            <span class="desc-info">*上传120*120px,大小不超过1M的图片,支持png、jpg格式
+		            </span>
+		        </div>      
+			</div>
+			<div class="appcreateform-btn">
+
+				<p class="errmsg" ng-show='vm.formError.pics'>{{vm.formError.pics}}</p>	
+
+				<input  type="submit" class="appcreateform-btninfo"
+						ng-class="{'appcreateform-btninfo-grey':(appcreateform.$invalid || 
+						(vm.formData.pics).length == 0 || vm.gyreturnval.key==0),
+						'appcreateform-btninfo-blue':!(appcreateform.$invalid || 
+						(vm.formData.pics).length == 0 || vm.gyreturnval.key==0)}"
+						ng-disabled="appcreateform.$invalid || (vm.formData.pics).length == 0 
+						|| vm.gyreturnval.key==0" 
+						value="创建">
+			</div>
+		</form>
+	</div>
+	<div class="appcreatesuccess" ng-show="!vm.isshowappcreating">
+		<div class="appcreatesuccess-first"></div>
+		<div class="appcreatesuccess-second">新应用创建成功
+			<a href="#/business/businesshome" class="business">去商户首页</a>
+		</div>
+	</div>
+</div>

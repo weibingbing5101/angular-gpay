@@ -1,0 +1,56 @@
+<!-- <div class="tit">商户首页 / 我的帐户 / 帐户总览</div> -->
+<dl class="box-shadow-css warpbox">
+  <dt class="warpbox-left">
+    <gp-tree></gp-tree>
+  </dt>
+  <dd class="warpbox-right">
+    <p class="warpbox-right-title">交易密钥</p>
+    <p class="prompt">提示：支持MD5和RSA两种签名方式，商户发起请求时填写对应的密钥信息</p>
+      <div class="rightbottom">
+        <div class="MD"> 
+          <div class="MD-name">MD5密钥&nbsp :</div>
+            <div class="RSA-content">
+              <label> {{vm.MD['md5']}}</label>
+            </div>
+        </div>
+        <div class="RSA">
+          <div class="RSA-name">RSA公钥&nbsp :</div>
+          <div class="RSA-content">
+            <textarea 
+                col='10'
+                class="RSA-content-text" 
+                autocomplete="off"
+                ng-model="vm.RSA"
+                ng-change="vm.inputChangeFN()">
+            </textarea>
+            <a class="RSA-content-link" href="https://www.openssl.org/source/?spm=a219a.7629140.0.0.0EiJsi">查看如何生成与配置RSA密钥？</a>
+            <button 
+                ng-if="vm.RSAfirst!=null" 
+                class="RSA-content-adit" 
+                type="submit" 
+                ng-class="{editRSAPermit:vm.editRSAPermit}"
+                ng-click="vm.updateRSA()">
+                修改
+            </button>
+            <button 
+                ng-if="vm.RSAfirst===null" 
+                class="RSA-content-adit" 
+                type="submit" 
+                ng-class="{editRSAPermit:vm.editRSAPermit}"
+                ng-click="vm.saveRSA()">
+                设置
+            </button>
+            <label ng-if="vm.RSAfirst!==null"class="RSA-content-label">修改密钥过程会影响交易，建议在无交易时修改密钥 </label>
+          </div>
+        </div>
+        <div ng-if="vm.success" class="popwindow-shadow">
+          <div  ng-model="vm.this.success" class="success">
+             <span class="home-banner-login-success-img mt10px success-img"></span>
+             <label class="success-context">{{vm.successContext}}</label>
+             <button ng-click="vm.successBtn()" class="success-btn">确定</button>
+          </div>
+      </div>
+
+    </div>
+  </dd>
+</dl>

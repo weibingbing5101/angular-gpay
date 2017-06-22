@@ -1,0 +1,44 @@
+<div class="experiencecenter">
+    <div class="center-banner">
+        <div>
+        <div class="banner-title">果仁支付DEMO体验区</div>
+        <div class="banner-desc">请选择场景进行体验</div>
+        </div>
+    </div>
+    <div class="center-content box-shadow-css">
+       	<div class="content-pay">
+    		<div class="pay-way-style pay-mobile-net" ng-click="vm.selectPayWay('mobileNet')"
+    			ng-class="{'pay-way-selected':vm.payWay=='mobileNet'}">
+    			<div class="pay-img-style net-img"></div>
+    			<div>移动网页支付</div>
+    		</div>
+    		<div class="pay-way-style pay-mobile-app" ng-click="vm.selectPayWay('mobileApp')"
+    			ng-class="{'pay-way-selected':vm.payWay=='mobileApp'}">
+    			<div class="pay-img-style app-img"></div>
+    			<div>移动APP支付</div>
+    		</div>
+    		<div class="pay-way-style pay-pc" ng-click="vm.selectPayWay('pc')"
+    			ng-class="{'pay-way-selected':vm.payWay=='pc'}">
+    			<div class="pay-img-style pc-img"></div>
+    			<div>PC扫码支付</div>
+    		</div>
+    		<div class="pay-way-style pay-offline" ng-click="vm.selectPayWay('offline')"
+    			ng-class="{'pay-way-selected':vm.payWay=='offline'}">
+    			<div class="pay-img-style offline-img"></div>
+    			<div>线下扫码支付</div>
+    		</div>
+    	</div>
+    	<div class="content-dimension" ng-show="vm.payWay=='mobileNet'">
+    		<div>扫描二维码，下载客户端体验DEMO</div>
+    		<div class="dimension-img" id="dimension-img">
+    			<qrcode text="vm.text" size="vm.size"></qrcode>	
+    		</div>
+    		<div>扫码唤起果仁支付H5页面</div>
+    		<div class="dimension-desc">发起真实交易，体验支付流程</div>
+    	</div>
+    	<div class="content-wait" ng-show="vm.payWay!='mobileNet'">
+    		<div class="wait-extend">业务场景正在紧张的扩展中</div>
+    		<div class="wait-expect">敬请期待...</div>
+    	</div>
+    </div>
+</div>

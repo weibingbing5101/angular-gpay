@@ -1,0 +1,242 @@
+<div ng-show="vm.orderListShow">
+    <dl class="box-shadow-css warpbox">
+        <dt class="warpbox-left">
+            <gp-tree></gp-tree>
+        </dt>
+        <dd class="warpbox-right">
+            <p class="warpbox-right-title">
+                商户订单
+            </p>
+            <div class="order-list-search">
+                <gy-calendarlink 
+                    class="calendarlink"
+                    gygetstartdate="vm.gygetstartdate"
+                    gygetenddate="vm.gygetenddate"
+                    gyreturnstartdate="vm.gyreturnstartdate"
+                    gyreturnenddate="vm.gyreturnenddate"
+                >
+                </gy-calendarlink>
+                <!-- 渠道状态 -->
+                <gy-select 
+                  class ="KWselect"
+                  gyreturnval="vm.gyreturnval" 
+                  gyseldata="vm.ditchStatusEnum" 
+                  style="display: inline-block;">
+                </gy-select>
+                <!-- 付款状态 -->
+                <gy-select 
+                  class ="KWselect"
+                  gyreturnval="vm.gyReturnPayStatusEnum" 
+                  gyseldata="vm.payStatusEnum"  
+                  style="display: inline-block;">
+                </gy-select>                <!-- 退款状态 -->
+                <gy-select 
+                  class ="KWselect"
+                  gyreturnval="vm.gyReturnRefundStatusEnum" 
+                  gyseldata="vm.refundStatusEnum"  
+                  style="display: inline-block;">
+                </gy-select>
+                <div class="order-list-search-searchbox">
+                  <input 
+                    type="text" 
+                    placeholder="输入商户订单号" 
+                    class="order-list-search-searchbox-input"
+                    ng-model="vm.appOrder"
+                    ></input>
+                  <span class="order-list-search-searchbox-btn search-searchbox-btn" ng-click="vm.searchList()">查询</span>
+                </div>
+            </div>
+            <!-- /查询条件 -->
+            <!-- 表格 -->
+            <table class="table table-striped table-hover table-bordered clearfix" ng-table="vm.tableParams">
+                <thead>
+                    <tr>
+                        <th> 交易时间 </th>
+                        <th> 商户订单号 </th>
+                        <th> 商品名称</th>
+                        <!--
+                        <th> 果付订单号 </th>
+                        -->
+                        
+                        <th > 订单金额（{{vm.currency==='USD'?'美元':'元'}}） </th>
+                        <th> 渠道 </th>
+                        <th> 订单支付状态 </th>
+                        <th> 退款状态 </th>
+                        <th> 操作 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in $data track by $index">
+                        <td> {{row.payTime | timeformate}} </td>                        <!--交易时间-->
+                        <td> {{row.mercOrdrNo}} </td>                                   <!--订单号-->
+                        <td> {{row.goodsNm.length>7?row.goodsNm.substr(0,7)+'...':row.goodsNm}}</td>
+                        <!--<td> {{row.consNo}} </td>-->                                       <!--果付订单号-->
+                        <td> {{row.tradeAmount | numPoint2}}</td>                       <!--订单金额（¥）-->
+                        <td> {{row.payStl | fromText}}</td>                             <!--渠道-->
+                        <td> {{row.status | payStatusText}}</td>                        <!--订单支付状态-->
+                        <td> {{row.isRefund | orderList_RefundStatusText}}</td>          <!--退款状态-->
+                        <td>                                                            <!--操作-->
+                            <a  
+                                href="javascript:;" 
+                                ng-show="row.refundAmount>0&&row.status" 
+                                ng-click="vm.refundFN(row.refundAmount , row.mercOrdrNo)"
+                                title="退款">
+                                退款
+                            </a>
+                            <a 
+                                href="javascript:;"
+                                ng-click="vm.readDetailFN(row.mercOrdrNo)"
+                                >
+                                查看详情
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /表格 -->
+            <div class="search-tip" ng-hide="vm.tableParams && (vm.tableParams.data).length != 0">
+                没有符合条件的结果
+            </div>
+        </dd>
+    </dl>
+</div>
+    <!-- 退款 输入窗口 vm.isrefundWinShow-->
+<div class="order-list-shadebox" ng-show="vm.isrefundWinShow">
+    <div class="order-list-win">
+        <span class="order-list-win-close" ng-click="vm.closeRefundWin()"></span>
+        <p class="order-list-win-tit">发起退款</p>
+        <p class="order-list-win-refundnum">
+            该订单可退款金额为 
+            <span class="wblue">
+                {{vm.usableRefundNum | numPoint2}}
+            </span> 
+            {{vm.currency==='USD'?'美元':'元'}}
+        </p>
+        <p class="order-list-win-write">
+            <span class="order-list-win-name">退款金额</span>
+            <input type="text" 
+                ng-model="vm.refundNum" 
+                ng-change="vm.refundNumFN()" 
+                placeholder="请输入退款金额">
+            </input>
+        </p>
+        <p class="order-list-win-write">
+            <span class="order-list-win-name">登录密码</span>
+             <input type="password" 
+                ng-model="vm.loginPassword"
+                ng-change="vm.refundPasswordFN()" 
+                placeholder="登录密码">
+            </input>
+        </p>
+        <p class="order-list-win-tips">{{vm.refundTips}}</p>
+        <p class="order-list-win-btns">
+            <span class="order-list-confirmbtn" ng-click="vm.commitRefundFN()">确定</span>
+            <span class="order-list-confirmbtn" href="javascript:;" ng-click="vm.closeRefundWin()">取消</span>
+        </p>
+    </div>
+</div>
+<!-- 退款 进行中窗口 -->
+<div class="list-success box-shadow-css" ng-show="vm.isSuccessWinShow">
+    <div class="list-success-img"></div>
+    <div class="list-success-first">退款申请已发送至系统处理，请及时在退款记录中查询</div>
+    <div class="list-success-second">
+        <a href="#/business/businesshome">返回应用首页</a> 
+        &nbsp&nbsp&nbsp
+        <a href="javascript:;" ng-click="vm.backToOrderList()">返回订单列表</a>
+    </div>
+</div>
+<!-- 退款 失败窗口 -->
+<div class="list-fail box-shadow-css" ng-show="vm.isFaildWinShow">
+    <div class="list-fail-img"></div>
+    <div class="list-fail-first">退款申请失败</div>
+    <div class="list-fail-second">{{vm.refundErrorMsg}}</div>
+    <div class="list-fail-third">
+        <a href="#/business/businesshome">返回应用首页</a> 
+        &nbsp&nbsp&nbsp
+        <a href="javascript:;" ng-click="vm.backToOrderList()">返回订单列表</span>
+        &nbsp&nbsp&nbsp
+        <a href="javascript:;" ng-click="vm.resentRefunshFN()">重新提交</a>
+    </div>
+</div>
+
+<!--URL传参缺少-->
+<gy-alert
+    gytitlel="vm.alertData.title"
+    gycontext="vm.alertData.conText"
+    gybuttontext="vm.alertData.buttonText"
+    gyisshow="vm.alertData.isAlertShow"
+    gyclickfn="vm.alertData.clickFn"
+></gy-alert>
+
+<!--查看详情-->
+<div class="list-detail-warpbox" ng-show="vm.detailData.isDetailShow">
+    <div class="list-detail">
+        <span class="list-detail-close" ng-click="vm.detailData.DetailCloseFn()"></span>
+        <div class="list-detail-title">订单详情</div>
+        <ul class="list-detail-content">
+            <li class="list-detail-item">
+                <p class="list-detail-item-left">
+                    <span class="item-name">交易发起时间</span>
+                    <span class="item-text">{{vm.detailData.object.tradeTime | timeformate}}</span>
+                </p>
+                <p class="list-detail-item-right">
+                    <span class="item-name">交易完成时间</span>
+                    <span class="item-text">{{vm.detailData.object.payTime | timeformate }}</span>
+                </p>
+            </li>            
+            <li class="list-detail-item">
+                <p class="list-detail-item-left">
+                    <span class="item-name">商户订单号</span>
+                    <span class="item-text">{{vm.detailData.object.mercOrdrNo}}</span>
+                </p>
+                <p class="list-detail-item-right">
+                    <span class="item-name">果付订单号</span>
+                    <span class="item-text">{{vm.detailData.object.consNo}}</span>
+                </p>
+            </li>           
+            <li class="list-detail-item">
+                <p class="list-detail-item-left nobottomborder">
+                    <span class="item-name">订单金额</span>
+                    <span class="item-text">{{vm.detailData.object.tradeAmount}} {{vm.currency==='USD'?'美元':'元'}} </span>
+                </p>
+                <p class="list-detail-item-right nobottomborder">
+                    
+                </p>
+            </li>
+
+            <br/><br/>
+            
+            <li class="list-detail-item">
+                <p class="list-detail-item-left">
+                    <span class="item-name">订单支付状态</span>
+                    <span class="item-text">{{vm.detailData.object.status | payStatusText}}</span>
+                </p>
+                <p class="list-detail-item-right">
+                    <span class="item-name">渠道</span>
+                    <span class="item-text">{{vm.detailData.object.payStl | fromText}}</span>
+                </p>
+            </li>
+            <li class="list-detail-item">
+                <p class="list-detail-item-left">
+                    <span class="item-name">支付币种</span>
+                    <span class="item-text wblue">{{vm.detailData.object.payCurrency}}</span>
+                </p>
+                <p class="list-detail-item-right">
+                    <span class="item-name">退款状态</span>
+                    <span class="item-text">{{vm.detailData.object.isRefund | orderList_RefundStatusText}}</span>
+                </p>
+            </li>
+            <li class="list-detail-item">
+                <p class="list-detail-item-left nobottomborder">
+                    <span class="item-name">支付果仁数</span>
+                    <span class="item-text gop-icon-txt">{{vm.detailData.object.gopAmount}}</span>
+                    <span class="gop-icon-black"></span>
+                </p>
+                <p class="list-detail-item-right nobottomborder">
+                    <span class="item-name">成交价</span>
+                    <span class="item-text"> ¥ {{vm.detailData.object.gopPrice}}</span>
+                </p>
+            </li>            
+        </ul>
+    </div>
+</div>

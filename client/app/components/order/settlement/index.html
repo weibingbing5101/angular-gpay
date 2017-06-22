@@ -1,0 +1,93 @@
+
+<dl class="order-settlement-box-con box-shadow-css warpbox">
+    <dt class="warpbox-left">
+        <gp-tree></gp-tree>
+    </dt>
+    <dd class="warpbox-right">
+        <p class="warpbox-right-title">
+            结算记录
+        </p>           
+        <div ng-if="vm.currency=='CNY' || vm.okpayAccount=='' " class="order-settlement-card">
+            <p class="order-settlement-card-left">
+                <span class="order-settlement-card-left-key">
+                    结算卡信息：
+                </span>                        
+                <span class="order-settlement-card-left-val">
+                    {{vm.bankcardAdd}}  &nbsp&nbsp&nbsp( {{vm.bankcardNO | bankcardNO}})
+                </span>
+            </p>
+            <p class="order-settlement-card-right">
+                <span class="order-settlement-card-right-key">
+                    开户名：
+                </span>                        
+                <span class="order-settlement-card-right-val">
+                    {{vm.bankcardName}}
+                </span>
+            </p>
+            <div class="order-settlement-card-bottom">
+                ----------------如需修改结算卡信息，请联系客服400 800 8000----------------
+            </div>
+        </div>
+
+        <div ng-if="vm.currency=='USD'&&vm.okpayAccount!=''" class="order-settlement-card">
+            <p class="order-settlement-card-left">                       
+                <span ng-if="vm.okpayAccount" class="order-settlement-card-left-val">
+                  OKPAY账号： &nbsp&nbsp&nbsp {{vm.okpayAccount}}  
+                </span>
+
+            </p>
+            <div class="order-settlement-card-bottom">
+                ----------------如需修改结算卡信息，请联系客服400 800 8000----------------
+            </div>
+         </div>
+        <div class="order-settlement-search pl30px">
+            <gy-calendarlink 
+                class="calendarlink"
+                gygetstartdate="vm.gygetstartdate"
+                gygetenddate="vm.gygetenddate"
+                gyreturnstartdate="vm.gyreturnstartdate"
+                gyreturnenddate="vm.gyreturnenddate"
+            >
+            </gy-calendarlink>
+      
+            <div class="order-settlement-search-searchbox">
+              <input 
+                type="text" 
+                placeholder="输入订单号" 
+                class="order-settlement-search-searchbox-input"
+                ng-model="vm.appOrder"
+                ></input>
+              <span class="order-settlement-search-searchbox-btn search-searchbox-btn" ng-click="vm.searchList()">查询</span>
+            </div>
+        </div>
+        <!-- /查询条件 -->
+        <!-- 表格 -->
+        <table class="table table-striped table-hover table-bordered clearfix" ng-table="vm.tableParams">
+            <thead>
+                <tr>
+                    <th> 结算开始时间 </th>
+                    <th> 付款完成时间 </th>
+                    <th> 付款订单号 </th>
+                    <th > 申请结算金额（{{vm.currency==='USD'?'美元':'元'}}）</th>
+                    <th > 手续费（{{vm.currency==='USD'?'美元':'元'}}） </th>
+                    <th > 实际结算金额（{{vm.currency==='USD'?'美元':'元'}}） </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in $data track by $index">
+                    <td> {{row.createTime | timeformate}} </td>
+                    <td> {{row.payTime | timeformate}} </td>
+                    <td> {{row.wdcNo}} </td>
+                    <td> {{row.applyAmt | numPoint2}}</td>
+                    <td> {{row.fee | numPoint2}}</td>
+                    <td> {{row.factAmt | numPoint2}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- /表格 -->
+        <div class="search-tip" ng-hide="vm.tableParams && (vm.tableParams.data).length != 0">
+            没有符合条件的结果
+        </div>
+    </dd>
+</dl>
+

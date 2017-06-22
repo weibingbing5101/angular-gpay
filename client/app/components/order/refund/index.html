@@ -1,0 +1,166 @@
+<div class="order-refund-box">
+    <dl class="order-refund-box-con box-shadow-css warpbox">
+        <dt class="order-refund-box-con-left warpbox-left">
+            <gp-tree></gp-tree>
+        </dt>
+        <dd class="order-refund-box-con-right order-refund-box-con-right-total warpbox-right">
+            <p class="warpbox-right-title">
+                退款记录
+            </p>
+            <div class="order-refund-search pl30px">
+                <gy-calendarlink 
+                    class="calendarlink" 
+                    gygetstartdate="vm.gygetstartdate"
+                    gygetenddate="vm.gygetenddate"
+                    gyreturnstartdate="vm.gyreturnstartdate"
+                    gyreturnenddate="vm.gyreturnenddate"
+                >
+                </gy-calendarlink>
+                <!-- 退款状态 -->
+                <gy-select class="KWselect" gyreturnval="vm.gyReturnRefundStatusEnum" gyseldata="vm.refundStatusEnum" style="display: inline-block;">
+                </gy-select>
+                <!-- 退款方式 
+                <gy-select 
+                    class="KWselect" 
+                    gyreturnval="vm.gyReturnRefundTypeEnum" 
+                    gyseldata="vm.refundTypeEnum" 
+                    style="display: inline-block;">
+                </gy-select>
+                -->
+                <div class="order-refund-search-searchbox">
+                    <input type="text" placeholder="输入商户退款订单号" class="order-refund-search-searchbox-input" ng-model="vm.appOrder"></input>
+                    <span class="order-refund-search-searchbox-btn search-searchbox-btn" ng-click="vm.searchList()">查询</span>
+                </div>
+            </div>
+            <!-- /查询条件 -->
+            <!-- 表格 -->
+            <table class="table table-striped table-hover table-bordered clearfix" ng-table="vm.tableParams">
+                <thead>
+                    <tr>
+                        <th> 退款时间 </th>
+                        <th> 商户订单号 </th>
+                        <th> 商户退款订单号 </th>
+                        <!--<th> 果付退款订单号 </th>  -->
+                        <th > 订单金额（{{vm.currency==='USD'?'美元':'元'}}） </th>
+                        <th > 申请退款金额（{{vm.currency==='USD'?'美元':'元'}}） </th>
+                        <th> 退款方式  </th>
+                        <th> 退款状态 </th>
+                        <th> 操作 </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in $data track by $index">
+                        <td> {{row.refundPayTime | timeformate}} </td>
+                        <td> {{row.mercOrdrNo}} </td>
+                        <td> {{row.mercRefundNo}} </td>
+                        <!--<td> {{row.refundNo}}</td>  -->
+                        <td> {{row.tradeAmount | numPoint2}}</td>
+                        <td> {{row.applyAmount | numPoint2}}</td>
+                        <td> {{row.refundType | refundList_refundTypeText}}</td>
+                        <td> {{row.status | refundList_RefundStatusText}}</td>
+                        <td> 
+                            <a 
+                                href="javascript:;"
+                                ng-click="vm.refundDetail(row.refundType, row.mercRefundNo)"
+                                >
+                                查看详情
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- /表格 -->
+            <div class="search-tip" ng-hide="vm.tableParams && (vm.tableParams.data).length != 0">
+                没有符合条件的结果
+            </div>
+        </dd>
+    </dl>
+</div>
+
+
+<!--退款详情 原路返回-->
+<div class="refund-detail-warpbox" ng-show="vm.detailData.isDetailShow">
+    <div class="refund-detail">
+        <span class="refund-detail-close" ng-click="vm.detailData.DetailCloseFn()"></span>
+        <div class="refund-detail-title">退款详情</div>
+        <ul class="refund-detail-content">
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">退款发起时间</span>
+                    <span class="item-text">{{vm.detailData.object.refundTime | timeformate}}</span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">退款处理完成时间</span>
+                    <span class="item-text">{{vm.detailData.object.refundPayTime | timeformate}}</span>
+                </p>
+            </li>            
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">原订单号</span>
+                    <span class="item-text">{{vm.detailData.object.mercOrdrNo}}</span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">果付订单号</span>
+                    <span class="item-text">{{vm.detailData.object.consNo}}</span>
+                </p>
+            </li>  
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">退款订单号</span>
+                    <span class="item-text">{{vm.detailData.object.mercRefundNo}}</span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">果付退款订单号</span>
+                    <span class="item-text">{{vm.detailData.object.refundNo}}</span>
+                </p>
+            </li>           
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">订单金额</span>
+                    <span  class="item-text">{{vm.detailData.object.tradeAmount}} {{vm.currency==='USD'?'美元':'元'}} </span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">申请退款金额</span>
+                    <span  class="item-text">{{vm.detailData.object.applyAmount}} {{vm.currency==='USD'?'美元':'元'}} </span>
+                </p>
+            </li>
+
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">实际退款金额</span>
+                    <span  class="item-text">{{vm.detailData.object.refundAmount}} {{vm.currency==='USD'?'美元':'元'}}</span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name"></span>
+                    <span class="item-text"></span>
+                </p>
+            </li>
+            <br/>
+            <br/>
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">退款状态</span>
+                    <span class="item-text">
+                        {{vm.detailData.object.refundStatus | refundList_RefundStatusText}}
+                    </span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">退款方式</span>
+                    <span class="item-text">
+                        {{vm.detailData.object.refundType | refundList_refundTypeText}}
+                    </span>
+                </p>
+            </li>
+            <li class="refund-detail-item">
+                <p class="refund-detail-item-left">
+                    <span class="item-name">支付币种</span>
+                    <span class="item-text wblue">{{vm.detailData.object.payCurrency}}</span>
+                </p>
+                <p class="refund-detail-item-right">
+                    <span class="item-name">收款用户userID</span>
+                    <span class="item-text">{{vm.detailData.object.userId}}</span>
+                </p>
+            </li>          
+        </ul>
+    </div>
+</div>

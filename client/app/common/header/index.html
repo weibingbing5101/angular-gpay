@@ -1,0 +1,97 @@
+<div class='header-wrap'>
+	<div class='header warpbox'>
+		<!-- 未登录果仁支付官网头部 -->
+		<div class='header-logout-wrap' ng-if='vm.headerType===0'>
+			<!-- <img class="header-logout-logo" ng-src="{{vm.images.gplogo}}" 
+				ng-click="vm.changeToHome()"> -->	
+				<div class="header-logout-logo" ng-click="vm.changeToHome()">
+				<ul>
+					<li class="header-logout-logoli"> 
+						<div class="header-logout-logopic"></div>
+					</li>
+					<li class="header-logout-logoli">果仁支付</li>
+					<li class="header-logout-logoli verline"></li>
+					<li class="header-logout-logoli merchantfont">商户平台</li>
+				</ul>
+				</div>	
+			<ul class="header-logout-ul">
+				<li class="header-logout-li">
+					<a href="#/home" ng-class="{'header-logout-li-selected':vm.logoutSelected=='/home','header-logout-li-unselected':vm.logoutSelected!='/home'}">首页</a>
+				</li>
+				<li class="header-logout-li">
+					<a href="#/experience/center" ng-class="{'header-logout-li-selected':vm.logoutSelected=='/experience/center','header-logout-li-unselected':vm.logoutSelected!='/experience/center'}">体验中心</a>
+				</li>
+				<li class="header-logout-li">
+					<a href="#/doc/guide" ng-class="{'header-logout-li-selected':vm.logoutSelected=='/doc/guide','header-logout-li-unselected':vm.logoutSelected!='/doc/guide'}">开发文档</a>
+				</li>
+				<li class="header-logout-li">
+					<a href="#/help/account" ng-class="{'header-logout-li-selected':vm.logoutSelected=='/help/account','header-logout-li-unselected':vm.logoutSelected!='/help/account'}">帮助中心</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 登录后头部 -->
+		<div class="header-loginlogout-wrap" ng-if='vm.headerType===1'>
+			<!-- <img class="header-loginlogout-logo" ng-src="{{vm.images.gplogo}}"
+				ng-click="vm.changeToHome()">	 -->
+			<div class="header-logout-logo" ng-click="vm.changeToHome()">
+				<ul>
+					<li class="header-logout-logoli"> 
+						<div class="header-logout-logopic"></div>
+						<!-- <img class="header-logout-logopic" ng-src="{{vm.images.mgplogo}}"></img> -->
+					</li>
+					<li class="header-logout-logoli">果仁支付</li>
+					<li class="header-logout-logoli verline"></li>
+					<li class="header-logout-logoli merchantfont">商户平台</li>
+				</ul>
+				</div>		
+					
+			<div class="header-loginlogout-ul">
+				<!--
+				<div class="header-loginlogout-li">
+					<img ng-src="{{vm.images.bblogo}}" class="bblogo" />		
+					<a href="#/sheet/download" class="header-loginlogout-a" 
+						ng-show="vm.isshowsheet">报表下载</a>
+					<a class="header-loginlogout-a-disable" ng-show="!vm.isshowsheet">报表下载</a>
+				</div>
+				-->
+				<div class="header-loginlogout-li">
+					<div ng-click="vm.isShowSelect($event)">
+						<span class="header-loginlogout-a">{{vm.email}}</span>
+						<!-- <img ng-src="{{vm.images.selectlogo}}" class="selectlogo"/> -->
+						<span class="Selectlogo"></span>
+					</div>		
+					<div class="header-loginlogout-li-ul box-shadow-css" ng-show="vm.showSelect">
+						<div class="header-loginlogout-li-quit">
+							<a href="javascript:;" class="header-loginlogout-a" 
+								ng-click="vm.exitFN()">退出</a>
+						</div>					
+						<div class="header-loginlogout-li-img">	
+						</div>
+						<div class="header-loginlogout-li-li">
+							<span>已认证</span>
+						</div>
+						<div class="header-loginlogout-li-account">
+							<a href="javascript:;" ng-click="vm.gotoMine()"  class="header-loginlogout-a">进入账户</a>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div> 
+		<!--移动端header-->
+		<div class="header-home" ng-if='vm.headerType===2'>
+			<!-- <div class="header-home-wrap"> -->
+				<div class="header-home-menu">
+					<img ng-src="{{vm.images.mmenu}}" class="header-home-menu-img">
+				</div>
+				<div class="header-home-mine">
+					<img ng-src="{{vm.images.mmine}}" class="header-home-mine-img">
+				</div>
+				<div class="header-home-title">
+					<img ng-src="{{vm.images.gplogo}}" class="header-home-title-img">
+					<!-- <span class="header-home-title-txt">果仁支付</span> -->
+				</div>
+			<!-- </div> -->
+		</div>
+   </div> 
+</div>
+

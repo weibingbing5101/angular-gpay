@@ -1,0 +1,153 @@
+.app-infor {
+    // 标题部分
+    &-title {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 60px;
+    }
+    &-creat {
+        position: relative;
+        &:hover {
+            text-decoration: none;
+        }
+        line-height: 60px;
+        float: right;
+        font-size: 14px;
+    }
+    &-plus {
+        position: absolute;
+        top: -2px;
+        left: -25px;
+        font-weight: normal;
+        font-size: 28px;
+        font-style: normal;
+    }
+    // 展示内容 
+    &-list {
+        padding: 0px 30px;
+    }
+    &-item {
+        height: auto;
+        min-height: 80px;
+        line-height: 80px;
+        &-key {
+            color: #666666;
+            width: 75px;
+            float: left;
+        }
+        &-val {
+            padding-left: 85px;
+            color: #212121;
+            &>span {
+                display: inline-block;
+            }
+            &-left {
+                padding-right: 20px;
+                &-input {
+                    border-bottom: 1px solid #ccc;
+                    height: 30px;
+                }
+            }
+            &-right {
+                color: #9E9E9E;
+            }
+            &-icon {
+                margin-top: 0px;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+            }
+        }
+        &-vals {
+            float: left;
+            &>p {}
+            &-line1 {
+                line-height: 30px;
+                &>a {
+                    display: inline-block;
+                    margin: 0 10px;
+                    color: #00c4d5;
+                    text-decoration: underline;
+                }
+                overflow: hidden;
+                &-key {
+                    &>em {
+                        display: inline-block;
+                        font-style: normal;
+                        color: #9E9E9E;
+                    }
+                    width: 175px;
+                    display: inline-block;
+                }
+            }
+        }
+        &-btn {
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background: #ccc;
+            color: #fff;
+            text-align: center;
+            margin-right: 15px;
+            border-radius: 20px;
+        }
+        &-des {
+            color: #9E9E9E;
+        }
+        &-delete {
+            display: inline-block;
+            margin-left: 75px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #212121;
+            color: #fff;
+            text-align: center;
+            margin-right: 15px;
+            border-radius: 20px;
+        }
+    }
+}
+
+.yuse {
+    background: #212121;
+}
+
+.app-infor .mine-box-con-right-infor-li p {
+    margin-top: 0px;
+    min-height: 80px;
+    line-height: 80px;
+}
+
+.mine-box-con-right-infor-li-des.blue {
+    color: #00c4d5;
+}
+
+.mine-box-con-right-infor-li-des.red {
+    color: #EF6F66;
+}
+
+.app-name-input-box {
+    height: 30px;
+    line-height: 30px;
+    margin-top: 15px;
+    width: 320px;
+}
+
+.app-name-input {
+    width: 100%;
+    padding: 0 5px;
+}
+
+// 应用名更新  提示文字颜色
+.app-infor-item-val .red {
+    color: #EF6F66;   
+}
+.app-infor-item-val .blue {
+    color: #00c4d5;   
+}

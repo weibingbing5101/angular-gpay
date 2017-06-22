@@ -1,0 +1,72 @@
+<div class='header-wrap'>
+	<div class='header'>
+		<!-- 未登录果仁支付官网头部 -->
+		<div class='header-logout-wrap' ng-if='vm.headerType===0'>
+			<img class="header-logout-logo" ng-src="{{vm.images.gplogo}}" 
+				ng-click="vm.changeToHome()">		
+			<ul class="header-logout-ul">
+				<li class="header-logout-li">
+					<a href="#/home">首页</a>
+				</li>
+				<li class="header-logout-li">
+					<a href="#/doc/guide">开发文档</a>
+				</li>
+				<li class="header-logout-li">
+					<a href="#/help/account">帮助中心</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 登录后头部 -->
+		<div class="header-loginlogout-wrap" ng-if='vm.headerType===1'>
+			<img class="header-loginlogout-logo" ng-src="{{vm.images.gplogo}}"
+				ng-click="vm.changeToHome()">		
+			<div class="header-loginlogout-ul">
+				<!--
+				<div class="header-loginlogout-li">
+					<img ng-src="{{vm.images.bblogo}}" class="bblogo" />		
+					<a href="#/sheet/download" class="header-loginlogout-a" 
+						ng-show="vm.isshowsheet">报表下载</a>
+					<a class="header-loginlogout-a-disable" ng-show="!vm.isshowsheet">报表下载</a>
+				</div>
+				-->
+				<div class="header-loginlogout-li">
+					<div ng-click="vm.isShowSelect($event)">
+						<span class="header-loginlogout-a">{{vm.email}}</span>
+						<img ng-src="{{vm.images.selectlogo}}" class="selectlogo"/>
+					</div>		
+					<div class="header-loginlogout-li-ul box-shadow-css" ng-show="vm.showSelect">
+						<div class="header-loginlogout-li-img">	
+						</div>
+						<div class="header-loginlogout-li-li">
+							<span>已认证</span>
+						</div>
+						<div class="header-loginlogout-li-account">
+							<a href="javascript:;" ng-click="vm.gotoMine()"  class="header-loginlogout-a">进入账户</a>
+						</div>
+						<div class="header-loginlogout-li-quit">
+							<a href="javascript:;" class="header-loginlogout-a" 
+								ng-click="vm.exitFN()">退出</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div> 
+		<!--移动端header-->
+		<div class="header-home" ng-if='vm.headerType===2'>
+			<!-- <div class="header-home-wrap"> -->
+				<div class="header-home-menu">
+					<img ng-src="{{vm.images.mmenu}}" class="header-home-menu-img">
+				</div>
+				<div class="header-home-mine">
+					<img ng-src="{{vm.images.mmine}}" class="header-home-mine-img">
+				</div>
+				<div class="header-home-title">
+					<img ng-src="{{vm.images.gplogo}}" class="header-home-title-img">
+					<!-- <span class="header-home-title-txt">果仁支付</span> -->
+				</div>
+			<!-- </div> -->
+		</div>
+   </div> 
+</div>
+

@@ -1,0 +1,276 @@
+@import './bootstrap-extend.less';
+
+div,
+html,
+body,
+ul,
+li,
+p,
+span,
+em,
+b,
+i,
+img,
+h1,
+h2,
+h3,
+h4,
+h5,
+label {
+    font-weight: normal;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    font-family: 'Microsoft YaHei';
+}
+
+html {
+    background: #F5F6F7;
+}
+
+img {
+    border: none;
+    display: block;
+    width: 100%;
+}
+
+a {
+    color: #212121;
+    &:hover {
+        color: #00c4d5;
+        text-decoration: none;
+    }
+    &:active {
+        color: #00c4d5;
+    }
+}
+
+input {
+    outline: none;
+    border: none;
+    border-radius: 0;
+    appearance: none;
+    // -webkit-appearance: none;
+    background-color: transparent;
+}
+
+// config-less
+.app {
+    background: #F5F6F7;
+}
+
+.h40px {
+    height: 40px;
+    line-height: 30px;
+}
+
+.lh64px {
+    line-height: 64px;
+}
+
+.mt30px {
+    margin-top: 30px;
+}
+
+.mt20px {
+    margin-top: 20px;
+}
+
+.mb20px {
+    margin-bottom: 20px;
+}
+
+.pb0px {
+    padding-bottom: 0px;
+}
+
+.mb0px {
+    margin-bottom: 0px;
+}
+
+.mb40px {
+    margin-bottom: 40px;
+}
+
+.mb50px {
+    margin-bottom: 40px;
+}
+
+.mt15px {
+    margin-top: 15px;
+}
+
+.mt10px {
+    margin-top: 10px;
+}
+
+.pl30px {
+    padding-left: 30px;
+}
+
+.pb10px {
+    padding-bottom: 10px;
+}
+
+.pr30px {
+    padding-right: 30px;
+}
+
+.hauto {
+    height: auto;
+}
+
+.fontsize12 {
+    font-size: 12px;
+}
+
+.noborder {
+    border: none;
+}
+
+.nopadding {
+    padding: 0px;
+}
+
+// 按钮状态相关
+.nuse {
+    background: #CCCCCC;
+    &:hover {
+        color: #fff;
+    }
+}
+
+.yuse {
+    background: #343434;
+    &:hover {
+        color: #fff;
+    }
+}
+
+// 颜色相关
+.wblue {
+    color: #00c4d5;
+}
+
+.bgblue {
+    background: #00c4d5;
+}
+
+.w21 {
+    color: #212121;
+}
+
+.wred {
+    color: #EF6F66;
+}
+
+// 首页登录input框样式   <input class="home-login-input" />
+input.home-login-input {
+    width: 320px;
+    box-shadow: 0px 0px 0px 1px #ccc;
+    padding: 2px 5px;
+    height: 38px;
+    transition: 0.8s all ease;
+    &:hover {
+        box-shadow: 0px 0px 0px 1px #343434;
+        color: #343434;
+    }
+}
+
+// 首页登录按钮样式  <div class="home-login-input"> <a href="javascript:;"></a>  </div>
+.home-login-input {
+    width: 320px;
+    box-shadow: 0px 0px 0px 1px #ccc;
+    padding: 2px 5px;
+    height: 38px;
+    transition: 0.8s all ease;
+    // 公用的登录
+    &>a {
+        color: #fff;
+        text-align: center;
+        line-height: 36px;
+        display: block;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+// 登录 注册 重置 密码 input外面盒子样式
+.input-out-box {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    padding: 30px 40px 40px 40px;
+}
+
+// 搜索按钮样式
+.search-searchbox-btn {
+    min-width: 120px;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 20px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+// 登录 注册 重置 密码 提示文字样式
+.home-login-tipsbox {}
+
+.home-login-tips {
+    padding-bottom: 18px;
+    // line-height: 40px;
+    // min-height: 20px;
+    // color: red;
+}
+
+// 全局外面盒子阴影
+.box-shadow-css {
+    box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+// 组建样式
+// 标题       
+.tit {
+    width: 1200px;
+    margin: 0 auto;
+    height: 60px;
+    line-height: 60px;
+}
+
+// 最外面的盒子样式  只限于 左右布局盒子
+.warpbox {
+    min-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background: #fff;
+    width: 96%;
+    &-left {
+        width: 240px;
+        float: left;
+    }
+    &-right {
+        margin-left: 240px;
+        padding-bottom: 95px;
+        min-height: 580px;
+        border-left: 1px solid #E3E3E3;
+    }
+}
+.path-home .warpbox{
+    margin-bottom: 0;
+}
+
+// 媒体查询样式
+// 小于 600px的时候 
+@media screen and (max-width:800px) {}
+
+// 大于 800px的时候 
+@media screen and (min-width:800px) {
+    .app {
+        min-width: 1200px;
+    }
+}

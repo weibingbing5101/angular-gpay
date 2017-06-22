@@ -1,0 +1,94 @@
+<div class="app-infor">
+<!-- <div class="tit">商户首页 / 我的帐户 / 帐户总览</div> -->
+    <dl class="box-shadow-css warpbox">
+        <dt class="warpbox-left">
+            <gp-tree></gp-tree>
+        </dt>
+        <dd class="warpbox-right">
+            <div class="warpbox-right-title pr30px">
+                <span class="app-infor-title">基本信息</span>
+                <a class="app-infor-creat" href="#/app/create" ng-hide="vm.isCreateApp">
+                    <em class="app-infor-plus">+</em> 创建新应用
+                </a>
+            </div>
+            <ul class="app-infor-list">
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">appId：</p>
+                    <p class="app-infor-item-val">
+                        <span class="app-infor-item-val-left">{{vm.appInfor.appId}}</span>
+                        <span class="app-infor-item-val-right">（果付分配给开发者的appId，用于应用的唯一标识）</span>
+                    </p>
+                </li>
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">md5Key：</p>
+                    <p class="app-infor-item-val">
+                        <span class="app-infor-item-val-left">{{vm.appInfor.md5Key}}</span>
+                    </p>
+                </li>
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">App名称：</p>
+                    <p class="app-infor-item-val">
+                        <span class="app-infor-item-val-left app-name-input-box">
+                            <input 
+                                type="text" 
+                                ng-model="vm.appName" 
+                                ng-change="vm.nameChangeFN()"
+                                class="app-infor-item-val-left-input app-name-input" 
+                            ></input>
+                        </span>
+                        <span class="app-infor-item-btn" ng-click="vm.editAppNameFN()" ng-class="{yuse:vm.isEditAppName}">更新</span>
+                        <span class="app-infor-item-des" ng-class="{'blue' : vm.appNameClass==='ok' , 'red' : vm.appNameClass==='no'}">
+                            {{vm.tips}}
+                        </span>
+                    </p>
+                </li>
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">应用类型：</p>
+                    <p class="app-infor-item-val">
+                        {{vm.appInfor.appType}}
+                    </p>
+                </li>
+                <li class="app-infor-item" ng-show="vm.appInfor.appDesc">
+                    <p class="app-infor-item-key">应用描述：</p>
+                    <p class="app-infor-item-val">
+                        {{vm.appInfor.appDesc}}
+                    </p>
+                </li>
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">应用icon：</p>
+                    <p class="app-infor-item-val">
+                        <img src="{{vm.appInfor.iconUrl}}" class="app-infor-item-val-icon">
+                    </p>
+                </li>
+                <li class="app-infor-item">
+                    <p class="app-infor-item-key">接入方式：</p>
+                    <div class="app-infor-item-vals">
+                        <p class="app-infor-item-vals-line1">
+                            <span class="app-infor-item-vals-line1-key">移动支付</span>
+                            <a href="https://github.com/goopalpay/goopal-payment-sdk" target="_blank">下载SDK</a>
+                            <a href="#/doc/detail/index" target="_blank">查看接口文档</a>
+                        </p>
+                        <p class="app-infor-item-vals-line1">
+                            <span class="app-infor-item-vals-line1-key">H5收银台 <em>（敬请期待）</em> </span>
+                            <a href="javascript:;" class="no-href">下载SDK</a>
+                            <a href="javascript:;" class="no-href">查看接口文档</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="app-infor-item">
+                        <span ng-click="vm.deleteApp()" class="app-infor-item-delete">删除应用</span>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <div ng-show="vm.isShowWindow">
+        <gy-popwindow 
+            text="vm.text" 
+            confirm="vm.confirm" 
+            cancel="vm.cancel" 
+            canceltext="vm.canceltext" 
+            confirmtext="vm.confirmtext">
+        </gy-popwindow>
+    </div>
+    
+</div>

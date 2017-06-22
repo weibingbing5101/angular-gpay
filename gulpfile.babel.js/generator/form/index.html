@@ -1,0 +1,15 @@
+<div class="panel-wrap">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= title %></h3>
+    </div>
+    <div class="panel-body">
+      <div class="bg-info clearfix">
+        <formly-form model="vm.formData" fields="vm.formFileds" form="vm.submitForm">
+          <button type="submit" class="btn btn-primary" ng-click='vm.submit()' ng-disabled="vm.submitForm.$invalid">添加</button>
+          <button class="btn btn-primary" ng-click='vm.resetForm()'>重置</button>
+        </formly-form>
+      </div>
+    </div>
+  </div>
+</div>

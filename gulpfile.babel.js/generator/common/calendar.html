@@ -1,0 +1,8 @@
+<div class="gy-form-wrap">
+	<% var option = param.templateOptions||{type: 'text'}; %>
+	<% if(option.label){  %>
+		<%= helper.includeTpl('label.html', {option: option, param: param}) %>
+	<% } %>
+	<gy-calendarsingle gymodel="<%= helper.buildFormModel(param) %>" id="<% helper.buildFormId(param) %>" name="<% helper.buildFormId(param) %>"></gy-calendarsingle>
+</div>
+

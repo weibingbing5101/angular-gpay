@@ -1,0 +1,7 @@
+<div class="gy-form-wrap">
+	<% var option = param.templateOptions||{type: 'text'}; %>
+	<% if(option.label){  %>
+		<%= helper.includeTpl('label.html', {option: option, param: param}) %>
+	<% } %>
+	<input class="form-control " type="<%= option.type %>" ng-model="<%= helper.buildFormModel(param) %>" id="<% helper.buildFormId(param) %>" name="<% helper.buildFormId(param) %>" <% if(option.placeholder){ %>placeholder="<%= option.placeholder%>"<% } %> />
+</div>

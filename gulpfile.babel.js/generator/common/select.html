@@ -1,0 +1,7 @@
+<div class="gy-form-control">
+	<% var option = param.templateOptions||{type: 'text'}; %>
+	<% if(option.label){  %>
+		<%= helper.includeTpl('label.html', {option: option, param: param}) %>
+	<% } %>
+	<gy-select class="KWselect" gyreturnval="<%= helper.buildFormModel(param) %>" gyseldata="vm.options.<%= param.key %>"></gy-select>
+</div>

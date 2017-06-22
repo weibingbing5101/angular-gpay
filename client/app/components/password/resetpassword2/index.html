@@ -1,0 +1,102 @@
+<div class="resetpw-box box-shadow-css warpbox">
+	<form name="editPwdForm" ng-submit="vm.editPasswordFN()">
+		<!--重置填写邮箱部分-->
+		<div class="resetpw-box-inputbox input-out-box" >
+			<p class="resetpw-box-inputbox-tit">重置密码</p>
+			<div class="resetpw-box-inputbox-emailbox mt30px">
+				<input 
+					type="password" 
+					placeholder="请设置8-16位新密码" 
+					class="home-login-input" 
+					name="resetpassword" 
+					ng-model="vm.formData.password1"  
+					ng-blur="vm.changeFN1()"
+					maxlength="16"
+					autocomplete="off"
+				/>
+			</div>			
+			<div class="resetpw-box-inputbox-emailbox mt30px">
+				<input 
+					type="password" 
+					name="resetpassword" 
+					placeholder="请再次输入密码" 
+					class="home-login-input" 
+					ng-model="vm.formData.password2"
+					ng-blur="vm.changeFN2()"
+					maxlength="16"
+					autocomplete="off"
+				/>
+			</div>
+			<!--显示错误提示-->
+			<p class="home-login-tips mt10px wred mb0px mt10px h40px">
+				{{vm.formError.password}}
+			</p>
+			
+			<!-- 原有的提示
+		 	<p class="home-login-input nuse" ng-class="{'yuse':vm.Bnextstep}" ng-click="vm.reSetPwFN()">
+				<a href="javascript:;">保存</a>
+			</p> 
+			-->
+		 	<p class="home-login-input nuse" ng-class="{'yuse':vm.isSaveStatus}" ng-click="vm.reSetPwFN()">
+				<a href="javascript:;">保存</a>
+			</p> 
+
+		</div>		
+	</form>
+    <gy-popwindow 
+        text="vm.text" 
+        confirm="vm.confirm" 
+        cancel="vm.cancel" 
+        ng-show="vm.reLogin"
+        confirmtext="vm.confirmtext" 
+        canceltext="vm.canceltext" 
+        >
+    </gy-popwindow>
+
+</div>	
+<!--URL传参缺少-->
+<gy-alert
+	gytitlel="vm.alertData.title"
+	gycontext="vm.alertData.conText"
+	gybuttontext="vm.alertData.buttonText"
+	gyisshow="vm.alertData.isAlertShow"
+	gyclickfn="vm.alertData.clickFn"
+></gy-alert>
+<!--连接失效-->
+<div class="lose-warp" ng-show="vm.loseAlertData.isLoseShow">
+	<div class="lose-content">
+		<div class="lose-title">
+			重置密码
+		</div>
+		<div class="lose-icon">
+			<img ng-src="{{vm.loseAlertData.loseIcon}}">
+		</div>
+		<div class="lose-txt">
+			您的链接已失效，请重新找回密码
+		</div>
+		<div class="lose-button" ng-click="vm.loseAlertData.findPassWord()">
+			找回密码
+		</div>
+	</div>
+</div>
+<!--重置密码成功弹窗-->
+<div class="success-warp" ng-show="vm.successAlertData.isShow">
+	<div class="success-content">
+		<div class="success-icon">
+			<img ng-src="{{vm.successAlertData.successIcon}}">
+		</div>
+		<div class="success-txt">
+			恭喜，您的密码重置成功
+		</div>
+		<div class="success-button" ng-click="vm.successAlertData.login()">
+			知道了
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
